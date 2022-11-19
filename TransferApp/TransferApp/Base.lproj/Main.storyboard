@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="k5t-6p-wie">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Scene A-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="FirstViewController" title="Scene A" id="BYZ-38-t0r" customClass="ViewController" customModule="TransferApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ladusya printing..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DLt-BD-dSa">
+                                <rect key="frame" x="14.5" y="471" width="385.5" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h8Z-Ts-JbO">
+                                <rect key="frame" x="30" y="561" width="354" height="38"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Изменить с помощью свойства">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="editDataWithProperty:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7kN-HA-BNT"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemPurpleColor"/>
+                        <constraints>
+                            <constraint firstItem="h8Z-Ts-JbO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="9UE-gL-rax"/>
+                            <constraint firstItem="DLt-BD-dSa" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="GZO-8p-fiP"/>
+                            <constraint firstItem="h8Z-Ts-JbO" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-30" id="Jph-JH-kFa"/>
+                            <constraint firstItem="h8Z-Ts-JbO" firstAttribute="top" secondItem="DLt-BD-dSa" secondAttribute="bottom" constant="30" id="Zcb-8Q-u34"/>
+                            <constraint firstItem="DLt-BD-dSa" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="lLe-cx-fTZ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Scene A" id="nB7-lc-GgH"/>
+                    <connections>
+                        <outlet property="dataLabel" destination="DLt-BD-dSa" id="oLr-UV-FOa"/>
+                        <segue destination="3Ey-bd-EYK" kind="show" id="o3j-m2-om3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1000.0000000000001" y="116.51785714285714"/>
+        </scene>
+        <!--Scene B-->
+        <scene sceneID="mxe-3b-fhF">
+            <objects>
+                <viewController storyboardIdentifier="SecondViewController" id="3Ey-bd-EYK" customClass="SecondViewController" customModule="TransferApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="srl-Ol-jlC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A1U-53-IJZ">
+                                <rect key="frame" x="103.5" y="484" width="207" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VYo-0E-puc">
+                                <rect key="frame" x="30" y="548" width="354" height="38"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Сохранить с помощью свойства">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="saveDataWithProperty:" destination="3Ey-bd-EYK" eventType="touchUpInside" id="D7S-ee-TxX"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="3mT-34-GM1"/>
+                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                        <constraints>
+                            <constraint firstItem="A1U-53-IJZ" firstAttribute="width" secondItem="srl-Ol-jlC" secondAttribute="width" multiplier="0.5" id="2Iq-LZ-1po"/>
+                            <constraint firstItem="A1U-53-IJZ" firstAttribute="centerX" secondItem="3mT-34-GM1" secondAttribute="centerX" id="IzA-21-1Re"/>
+                            <constraint firstItem="3mT-34-GM1" firstAttribute="trailing" secondItem="VYo-0E-puc" secondAttribute="trailing" constant="30" id="dTk-cB-hFT"/>
+                            <constraint firstItem="VYo-0E-puc" firstAttribute="leading" secondItem="3mT-34-GM1" secondAttribute="leading" constant="30" id="tOv-ZW-HAy"/>
+                            <constraint firstItem="VYo-0E-puc" firstAttribute="top" secondItem="A1U-53-IJZ" secondAttribute="bottom" constant="30" id="tnh-KB-R2d"/>
+                            <constraint firstItem="A1U-53-IJZ" firstAttribute="centerY" secondItem="3mT-34-GM1" secondAttribute="centerY" id="ukI-iV-Sp1"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Scene B" id="BTu-T1-Q6M"/>
+                    <connections>
+                        <outlet property="dataTextField" destination="A1U-53-IJZ" id="UtH-DI-fcY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xc6-dF-EuR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1816" y="117"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="GM8-cm-NOZ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="k5t-6p-wie" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="AiS-nn-gg4">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="gUj-4L-Xnc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aNf-VC-TdL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="89.855072463768124" y="116.51785714285714"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
