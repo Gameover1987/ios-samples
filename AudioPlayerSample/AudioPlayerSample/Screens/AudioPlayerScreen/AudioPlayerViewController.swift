@@ -41,6 +41,20 @@ class AudioPlayerViewController: UIViewController {
         return label
     }()
     
+    private lazy var totalDurationLabel: UILabel = {
+        let label = UILabel()
+        label.font =  UIFont.systemFont(ofSize: 10)
+        label.textColor = .gray
+        return label
+    }()
+    
+    private lazy var currrentPositionLabel: UILabel = {
+        let label = UILabel()
+        label.font =  UIFont.systemFont(ofSize: 10)
+        label.textColor = .gray
+        return label
+    }()
+    
     private lazy var displayLink: CADisplayLink = CADisplayLink(target: self, selector: #selector(updatePlaybackStatus))
     
     private lazy var slider: UISlider = {
@@ -202,9 +216,18 @@ class AudioPlayerViewController: UIViewController {
         let playbackProgress = Float(player.currentTime / player.duration)
         
         slider.setValue(playbackProgress, animated: true)
+        currrentPositionLabel.text = getFormatedTime(timeDuration: Int(player.currentTime))
+        totalDurationLabel.text = getFormatedTime(timeDuration: Int(player.duration))
         
         print(playbackProgress)
     }
+    
+    func getFormatedTime(timeDuration:Int) -> String {
+        let minutes = Int(timeDuration) / 60 % 60
+        let seconds = Int(timeDuration) % 60
+        let strDuration = String(format:"%2d:%02d", minutes, seconds)
+        return strDuration
+      }
     
     @objc func playPauseButtonAction() {
         
@@ -225,7 +248,9 @@ class AudioPlayerViewController: UIViewController {
         view.addSubview(auidoTrackLabel)
         view.addSubview(performerLabel)
         view.addSubview(slider)
-
+        view.addSubview(totalDurationLabel)
+        view.addSubview(currrentPositionLabel)
+        
         view.addSubview(prevButton)
         view.addSubview(nextButton)
         view.addSubview(playButton)
@@ -254,6 +279,16 @@ class AudioPlayerViewController: UIViewController {
             maker.leftMargin.equalTo(view.safeAreaLayoutGuide).offset(16)
             maker.topMargin.equalTo(performerLabel.snp.bottom).offset(16)
             maker.rightMargin.equalTo(view.safeAreaLayoutGuide).offset(-16)
+        }
+        
+        totalDurationLabel.snp.makeConstraints { maker -> Void in
+            maker.topMargin.equalTo(slider.snp.bottom).offset(8)
+            maker.rightMargin.equalTo(view.safeAreaLayoutGuide).offset(-16)
+        }
+        
+        currrentPositionLabel.snp.makeConstraints { maker -> Void in
+            maker.topMargin.equalTo(slider.snp.bottom).offset(8)
+            maker.left.equalTo(view.safeAreaLayoutGuide).offset(5)
         }
         
         playButton.snp.makeConstraints { maker -> Void in
