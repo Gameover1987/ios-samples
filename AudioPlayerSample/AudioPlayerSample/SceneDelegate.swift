@@ -14,7 +14,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         // Перечисление дочерних контроллеров.
-        let audioPlayerController = AudioPlayerViewController(playlistProvider: PlaylistProvider.shared)
+        let audioPlayerViewModel = AudioPlayerViewModel(playlistProvider: PlaylistProvider.shared)
+        let audioPlayerController = AudioPlayerViewController(audioPlayerViewModel: audioPlayerViewModel)
         let videoPlayerController = VideoPlayerController()
         
         // Создание заголовков для контроллеров.
