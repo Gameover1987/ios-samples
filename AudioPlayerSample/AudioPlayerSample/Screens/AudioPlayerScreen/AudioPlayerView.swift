@@ -139,7 +139,6 @@ class AudioPlayerView : UIView {
         let playbackProgress = Float(playbackInfo.currentTime / playbackInfo.duration)
         
         slider.setValue(playbackProgress, animated: true)
-        print(playbackProgress)
         currrentPositionLabel.text = getFormatedTime(timeDuration: playbackInfo.currentTime)
         totalDurationLabel.text = getFormatedTime(timeDuration: playbackInfo.duration)
     }
