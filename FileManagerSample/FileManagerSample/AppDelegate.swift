@@ -11,7 +11,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let window = UIWindow()
         self.window = window
 
-        window.rootViewController = FileManagerViewController()
+        let fileManagerController = FileManagerViewController()
+        
+        let navigationController = UINavigationController(rootViewController: fileManagerController)
+        navigationController.navigationBar.prefersLargeTitles = true
+        
+        window.rootViewController = navigationController
         window.makeKeyAndVisible()
         
         return true
