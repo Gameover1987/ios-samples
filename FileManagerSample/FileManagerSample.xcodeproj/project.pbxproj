@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		4F97C7EA305140C9EA502E78 /* Pods_FileManagerSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1351F2A6CC77E9019717A480 /* Pods_FileManagerSample.framework */; };
+		80C202D1294CBCBC00B1BA52 /* AddFolderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C202D0294CBCBC00B1BA52 /* AddFolderViewController.swift */; };
+		80DB7E00294C5B6900BDEE40 /* FileSystemProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DB7DFF294C5B6900BDEE40 /* FileSystemProviderProtocol.swift */; };
+		80DB7E02294C5BC500BDEE40 /* FileSystemEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DB7E01294C5BC500BDEE40 /* FileSystemEntry.swift */; };
+		80DB7E06294C5C4400BDEE40 /* FileManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DB7E05294C5C4400BDEE40 /* FileManagerViewModel.swift */; };
 		80EFA3C0294B8E8D00B38E7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EFA3BF294B8E8D00B38E7F /* AppDelegate.swift */; };
 		80EFA3C4294B8E8D00B38E7F /* FileManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EFA3C3294B8E8D00B38E7F /* FileManagerViewController.swift */; };
 		80EFA3C9294B8E8E00B38E7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80EFA3C8294B8E8E00B38E7F /* Assets.xcassets */; };
@@ -17,6 +21,10 @@
 		1351F2A6CC77E9019717A480 /* Pods_FileManagerSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FileManagerSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		21126F6952367E8A4940C62F /* Pods-FileManagerSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FileManagerSample.release.xcconfig"; path = "Target Support Files/Pods-FileManagerSample/Pods-FileManagerSample.release.xcconfig"; sourceTree = "<group>"; };
 		46996DAFE57540F11E679E5D /* Pods-FileManagerSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FileManagerSample.debug.xcconfig"; path = "Target Support Files/Pods-FileManagerSample/Pods-FileManagerSample.debug.xcconfig"; sourceTree = "<group>"; };
+		80C202D0294CBCBC00B1BA52 /* AddFolderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFolderViewController.swift; sourceTree = "<group>"; };
+		80DB7DFF294C5B6900BDEE40 /* FileSystemProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystemProviderProtocol.swift; sourceTree = "<group>"; };
+		80DB7E01294C5BC500BDEE40 /* FileSystemEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystemEntry.swift; sourceTree = "<group>"; };
+		80DB7E05294C5C4400BDEE40 /* FileManagerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerViewModel.swift; sourceTree = "<group>"; };
 		80EFA3BC294B8E8D00B38E7F /* FileManagerSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FileManagerSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80EFA3BF294B8E8D00B38E7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		80EFA3C3294B8E8D00B38E7F /* FileManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerViewController.swift; sourceTree = "<group>"; };
@@ -44,6 +52,33 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		80DB7DFE294C5B4C00BDEE40 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				80DB7DFF294C5B6900BDEE40 /* FileSystemProviderProtocol.swift */,
+				80DB7E01294C5BC500BDEE40 /* FileSystemEntry.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		80DB7E03294C5C2000BDEE40 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				80DB7E04294C5C2A00BDEE40 /* FileManagerScreen */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		80DB7E04294C5C2A00BDEE40 /* FileManagerScreen */ = {
+			isa = PBXGroup;
+			children = (
+				80C202D0294CBCBC00B1BA52 /* AddFolderViewController.swift */,
+				80EFA3C3294B8E8D00B38E7F /* FileManagerViewController.swift */,
+				80DB7E05294C5C4400BDEE40 /* FileManagerViewModel.swift */,
+			);
+			path = FileManagerScreen;
+			sourceTree = "<group>";
+		};
 		80EFA3B3294B8E8D00B38E7F = {
 			isa = PBXGroup;
 			children = (
@@ -66,9 +101,10 @@
 			isa = PBXGroup;
 			children = (
 				80EFA3BF294B8E8D00B38E7F /* AppDelegate.swift */,
-				80EFA3C3294B8E8D00B38E7F /* FileManagerViewController.swift */,
 				80EFA3C8294B8E8E00B38E7F /* Assets.xcassets */,
 				80EFA3CD294B8E8E00B38E7F /* Info.plist */,
+				80DB7DFE294C5B4C00BDEE40 /* Model */,
+				80DB7E03294C5C2000BDEE40 /* Screens */,
 			);
 			path = FileManagerSample;
 			sourceTree = "<group>";
@@ -79,7 +115,6 @@
 				46996DAFE57540F11E679E5D /* Pods-FileManagerSample.debug.xcconfig */,
 				21126F6952367E8A4940C62F /* Pods-FileManagerSample.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -196,8 +231,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80C202D1294CBCBC00B1BA52 /* AddFolderViewController.swift in Sources */,
 				80EFA3C4294B8E8D00B38E7F /* FileManagerViewController.swift in Sources */,
 				80EFA3C0294B8E8D00B38E7F /* AppDelegate.swift in Sources */,
+				80DB7E06294C5C4400BDEE40 /* FileManagerViewModel.swift in Sources */,
+				80DB7E00294C5B6900BDEE40 /* FileSystemProviderProtocol.swift in Sources */,
+				80DB7E02294C5BC500BDEE40 /* FileSystemEntry.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
