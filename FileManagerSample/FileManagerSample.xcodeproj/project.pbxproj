@@ -15,6 +15,8 @@
 		80EFA3C0294B8E8D00B38E7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EFA3BF294B8E8D00B38E7F /* AppDelegate.swift */; };
 		80EFA3C4294B8E8D00B38E7F /* FileManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EFA3C3294B8E8D00B38E7F /* FileManagerViewController.swift */; };
 		80EFA3C9294B8E8E00B38E7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80EFA3C8294B8E8E00B38E7F /* Assets.xcassets */; };
+		80FEC8F6294EEED100018DD8 /* FileManagerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FEC8F5294EEED100018DD8 /* FileManagerTableViewCell.swift */; };
+		80FEC8F8294F06A100018DD8 /* NotificationNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FEC8F7294F06A100018DD8 /* NotificationNames.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		80EFA3C3294B8E8D00B38E7F /* FileManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerViewController.swift; sourceTree = "<group>"; };
 		80EFA3C8294B8E8E00B38E7F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		80EFA3CD294B8E8E00B38E7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		80FEC8F5294EEED100018DD8 /* FileManagerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerTableViewCell.swift; sourceTree = "<group>"; };
+		80FEC8F7294F06A100018DD8 /* NotificationNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNames.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,9 +76,11 @@
 		80DB7E04294C5C2A00BDEE40 /* FileManagerScreen */ = {
 			isa = PBXGroup;
 			children = (
+				80FEC8F4294EEE1900018DD8 /* Cells */,
 				80C202D0294CBCBC00B1BA52 /* AddFolderViewController.swift */,
 				80EFA3C3294B8E8D00B38E7F /* FileManagerViewController.swift */,
 				80DB7E05294C5C4400BDEE40 /* FileManagerViewModel.swift */,
+				80FEC8F7294F06A100018DD8 /* NotificationNames.swift */,
 			);
 			path = FileManagerScreen;
 			sourceTree = "<group>";
@@ -107,6 +113,14 @@
 				80DB7E03294C5C2000BDEE40 /* Screens */,
 			);
 			path = FileManagerSample;
+			sourceTree = "<group>";
+		};
+		80FEC8F4294EEE1900018DD8 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				80FEC8F5294EEED100018DD8 /* FileManagerTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		FC75AE884BD236DA3B3EA69D /* Pods */ = {
@@ -232,10 +246,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				80C202D1294CBCBC00B1BA52 /* AddFolderViewController.swift in Sources */,
+				80FEC8F8294F06A100018DD8 /* NotificationNames.swift in Sources */,
 				80EFA3C4294B8E8D00B38E7F /* FileManagerViewController.swift in Sources */,
 				80EFA3C0294B8E8D00B38E7F /* AppDelegate.swift in Sources */,
 				80DB7E06294C5C4400BDEE40 /* FileManagerViewModel.swift in Sources */,
 				80DB7E00294C5B6900BDEE40 /* FileSystemProviderProtocol.swift in Sources */,
+				80FEC8F6294EEED100018DD8 /* FileManagerTableViewCell.swift in Sources */,
 				80DB7E02294C5BC500BDEE40 /* FileSystemEntry.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

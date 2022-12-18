@@ -7,7 +7,7 @@ protocol FileSystemProviderProtocol {
     
     func getContentsOfDirectory(path: String) throws -> [FileSystemEntry]
     
-    func createDirectory(directoryName: String)
+    func createDirectory(directoryUrl: URL) throws
     
     func saveImageToFile(image: UIImage)
 }
@@ -28,16 +28,16 @@ final class FileSystemProvider : FileSystemProviderProtocol {
         var fileSystemEntries = [FileSystemEntry]()
         let contents = try FileManager.default.contentsOfDirectory(at: URL(fileURLWithPath: path), includingPropertiesForKeys: nil, options: [])
         for item in contents {
-            fileSystemEntries.append(FileSystemEntry(url: item))
+            fileSystemEntries.append(FileSystemEntry(url: item, isSystem: false))
         }
         
         return fileSystemEntries
     }
     
-    func createDirectory(directoryName: String) {
-        
+    func createDirectory(directoryUrl: URL) throws {
+        try FileManager.default.createDirectory(at: directoryUrl, withIntermediateDirectories: false, attributes: [:])
     }
-    
+        
     func saveImageToFile(image: UIImage) {
         
     }

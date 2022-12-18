@@ -18,8 +18,20 @@ class FileManagerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        
+        let nameReloadCellsNotification = Notification.Name(rawValue: NotificationNames.createDirectory.rawValue)
+        NotificationCenter.default.addObserver(self, selector: #selector(createDirectoryMessageHandler), name: nameReloadCellsNotification, object: nil)
+        
         setupUI()
         bindViewModel()
+    }
+    
+    @objc private func createDirectoryMessageHandler(notification: Notification) {
+        
+        if let folderName = notification.userInfo?["folderName"] as? String {
+            viewModel.createDirectory(directoryName: folderName)
+            tableView.reloadData()
+        }
+
     }
     
     private lazy var searchField: UISearchTextField = {
@@ -94,9 +106,18 @@ extension FileManagerViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedEntry = viewModel.entries[indexPath.row]
-        viewModel.changeDirectory(url: selectedEntry.url)
-        
-        tableView.reloadData()
+  
+        if (selectedEntry.isFolder) {
+            viewModel.changeDirectory(url: selectedEntry.url)
+            tableView.reloadData()
+        }
+        else {
+            
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
     }
 }
 
@@ -106,14 +127,8 @@ extension FileManagerViewController : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-        var content = cell.defaultContentConfiguration()
-        content.text = viewModel.entries[indexPath.row].name
-        
-        //content.secondaryText = "Age \(users[indexPath.row].age) years"
-        cell.contentConfiguration = content
+        let cell = FileManagerTableViewCell(style: .default, reuseIdentifier: nil)
+        cell.fileSystemEntry = viewModel.entries[indexPath.row]
         return cell
     }
-    
-    
 }

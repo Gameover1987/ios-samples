@@ -53,6 +53,9 @@ final class AddFolderViewController : UIViewController {
     }
     
     @objc func okAction() {
+        let dataDict:[String: String] = ["folderName": getFolderName()]
+        
+        NotificationCenter.default.post(name: NSNotification.Name(NotificationNames.createDirectory.rawValue), object: nil, userInfo: dataDict)
         self.dismiss(animated: true, completion: nil)
     }
 }
