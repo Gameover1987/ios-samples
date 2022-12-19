@@ -9,7 +9,7 @@ protocol FileSystemProviderProtocol {
     
     func createDirectory(directoryUrl: URL) throws
     
-    func saveImageToFile(image: UIImage)
+    func saveImageToFile(image: UIImage, folderUrl: URL) throws
 }
 
 final class FileSystemProvider : FileSystemProviderProtocol {
@@ -38,8 +38,16 @@ final class FileSystemProvider : FileSystemProviderProtocol {
         try FileManager.default.createDirectory(at: directoryUrl, withIntermediateDirectories: false, attributes: [:])
     }
         
-    func saveImageToFile(image: UIImage) {
+    func saveImageToFile(image: UIImage, folderUrl: URL) throws {
         
+        let now = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy HH:mm:ss"
+        let fileName = dateFormatter.string(from: now) + ".jpg"
+        let pathToImage = folderUrl.appendingPathComponent(fileName)
+        let imageData = image.jpegData(compressionQuality: 1.0)
+        
+        FileManager.default.createFile(atPath: pathToImage.relativePath, contents: imageData)
     }
 }
 

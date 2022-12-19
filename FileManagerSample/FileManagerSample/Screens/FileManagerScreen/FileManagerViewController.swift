@@ -18,14 +18,14 @@ class FileManagerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        let nameReloadCellsNotification = Notification.Name(rawValue: NotificationNames.createDirectory.rawValue)
-        NotificationCenter.default.addObserver(self, selector: #selector(createDirectoryMessageHandler), name: nameReloadCellsNotification, object: nil)
+        let createDirectoryNotification = Notification.Name(rawValue: NotificationNames.createDirectory.rawValue)
+        NotificationCenter.default.addObserver(self, selector: #selector(createDirectoryNotificationHandler), name: createDirectoryNotification, object: nil)
         
         setupUI()
         bindViewModel()
     }
     
-    @objc private func createDirectoryMessageHandler(notification: Notification) {
+    @objc private func createDirectoryNotificationHandler(notification: Notification) {
         
         if let folderName = notification.userInfo?["folderName"] as? String {
             viewModel.createDirectory(directoryName: folderName)
@@ -90,9 +90,8 @@ class FileManagerViewController: UIViewController {
 extension FileManagerViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerOriginalImage")] as? UIImage {
-            //PhotoFileManager.shared.savingAn(image: image)
-            print(image)
-            NotificationCenter.default.post(name: NSNotification.Name("saveImageToCurrentFolder"), object: nil)
+            viewModel.saveImageToCurrentFolder(image: image)
+            tableView.reloadData()
         }
         picker.dismiss(animated: true)
     }

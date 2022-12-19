@@ -21,31 +21,18 @@ final class FileManagerViewModel {
         }
     }
     
-    private func refresh()  throws {
-        
-        guard let currentDirectory = currentDirectory else {return}
-        
-        entries.removeAll()
-        
-        if (currentDirectory != fileSystemProvider.getDocumentsDirectory()) {
-            entries.append(FileSystemEntry(url: currentDirectory.deletingLastPathComponent(), isSystem: true))
+    func saveImageToCurrentFolder(image: UIImage) {
+        guard let currentDirectory = currentDirectory else {
+            return
         }
         
-        let items = try fileSystemProvider.getContentsOfDirectory(path: currentDirectory.relativePath).sorted { entry1, entry2 in
-            if (entry1.isFolder) {
-                if (entry2.isFolder){
-                    return entry1.name < entry2.name
-                }
-                return true
-            }
+        do {
+            try fileSystemProvider.saveImageToFile(image: image,
+                                               folderUrl: currentDirectory)
+            try refresh()
+        } catch {
             
-            return entry1.name < entry2.name
         }
-        entries.append(contentsOf: items)
-    }
-    
-    func addImageToGallery(image: UIImage) {
-        
     }
     
     func createDirectory(directoryName: String) {
@@ -61,5 +48,33 @@ final class FileManagerViewModel {
             
         }
         
+    }
+    
+    private func refresh() throws {
+        
+        guard let currentDirectory = currentDirectory else {return}
+        
+        entries.removeAll()
+        
+        if (currentDirectory != fileSystemProvider.getDocumentsDirectory()) {
+            entries.append(FileSystemEntry(url: currentDirectory.deletingLastPathComponent(), isSystem: true))
+        }
+        
+        let items = try fileSystemProvider.getContentsOfDirectory(path: currentDirectory.relativePath)
+           
+        let systemItems = items.filter { item in
+            item.isSystem
+        }
+        
+        let folders = items.filter { item in
+            item.isFolder
+        }.sorted(by: { $0.name < $1.name })
+        
+        let files = items.filter { item in
+            !item.isFolder
+        }.sorted(by: { $0.name < $1.name })
+            
+        
+        entries.append(contentsOf: systemItems + folders + files)
     }
 }
