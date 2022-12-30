@@ -4,10 +4,10 @@ import SnapKit
 
 class FileManagerViewController: UIViewController {
     
-    private let viewModel: FileManagerViewModel
+    private let fileManagerViewModel: FileManagerViewModel
     
-    init(viewModel: FileManagerViewModel) {
-        self.viewModel = viewModel
+    init(fileManagerViewModel: FileManagerViewModel) {
+        self.fileManagerViewModel = fileManagerViewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -17,21 +17,16 @@ class FileManagerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-        let createDirectoryNotification = Notification.Name(rawValue: NotificationNames.createDirectory.rawValue)
-        NotificationCenter.default.addObserver(self, selector: #selector(createDirectoryNotificationHandler), name: createDirectoryNotification, object: nil)
         
         setupUI()
-        bindViewModel()
     }
     
     @objc private func createDirectoryNotificationHandler(notification: Notification) {
         
         if let folderName = notification.userInfo?["folderName"] as? String {
-            viewModel.createDirectory(directoryName: folderName)
+            fileManagerViewModel.createDirectory(directoryName: folderName)
             tableView.reloadData()
         }
-
     }
     
     private lazy var searchField: UISearchTextField = {
@@ -47,16 +42,42 @@ class FileManagerViewController: UIViewController {
         return tableView
     }()
     
+    private lazy var addFolderButton: UIButton = {
+        
+        let config = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .large)
+        let image = UIImage(systemName: "folder", withConfiguration: config)
+        let button = UIButton()
+        
+        button.setImage(image, for: .normal)
+        
+        button.addTarget(self, action: #selector(createFolder), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    private lazy var addImageButton: UIButton = {
+        
+        let config = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .large)
+        let image = UIImage(systemName: "photo", withConfiguration: config)
+        let button = UIButton()
+        
+        button.setImage(image, for: .normal)
+        
+        button.addTarget(self, action: #selector(addImageFromGallery), for: .touchUpInside)
+        
+        return button
+    }()
+    
     private func setupUI() {
         view.backgroundColor = .white
-        self.navigationItem.title = "Documents"
         self.navigationItem.largeTitleDisplayMode = .always
-        
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Add image", style: .done, target: self, action: #selector(addImageFromGallery))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Create folder", style: .done, target: self, action: #selector(createFolder))
+                
+        self.title = fileManagerViewModel.currentDirectory?.lastPathComponent
         
         view.addSubview(searchField)
         view.addSubview(tableView)
+        view.addSubview(addFolderButton)
+        view.addSubview(addImageButton)
         
         searchField.snp.makeConstraints { maker in
             maker.left.top.right.equalTo(view.safeAreaLayoutGuide).inset(8)
@@ -68,10 +89,18 @@ class FileManagerViewController: UIViewController {
             maker.top.equalTo(searchField.snp.bottom).offset(8)
             maker.bottom.equalTo(view.safeAreaLayoutGuide).inset(8)
         }
-    }
-    
-    private func bindViewModel() {
         
+        addFolderButton.snp.makeConstraints { maker in
+            maker.left.bottom.equalTo(view.safeAreaLayoutGuide).inset(8)
+            maker.width.equalTo(50)
+            maker.height.equalTo(50)
+        }
+        
+        addImageButton.snp.makeConstraints { maker in
+            maker.right.bottom.equalTo(view.safeAreaLayoutGuide).inset(8)
+            maker.width.equalTo(50)
+            maker.height.equalTo(50)
+        }
     }
     
     @objc private func addImageFromGallery() {
@@ -81,16 +110,24 @@ class FileManagerViewController: UIViewController {
     }
     
     @objc private func createFolder() {
-        let addFolderController = AddFolderViewController()
-        addFolderController.modalPresentationStyle = .fullScreen
+        let addFolderController = AddFolderViewController(fileManagerViewModel: fileManagerViewModel)
+        addFolderController.createDirectoryAction = { [weak self] directoryName in
+            self?.fileManagerViewModel.createDirectory(directoryName: directoryName)
+            self?.tableView.reloadData()
+        }
         self.present(addFolderController, animated: true, completion: nil)
+    }
+    
+    private func moveToTrash(indexPath: IndexPath) {
+        fileManagerViewModel.deleteEntry(position: indexPath.row)
+        tableView.reloadData()
     }
 }
 
 extension FileManagerViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerOriginalImage")] as? UIImage {
-            viewModel.saveImageToCurrentFolder(image: image)
+            fileManagerViewModel.saveImageToCurrentFolder(image: image)
             tableView.reloadData()
         }
         picker.dismiss(animated: true)
@@ -104,15 +141,27 @@ extension FileManagerViewController : UIImagePickerControllerDelegate, UINavigat
 extension FileManagerViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedEntry = viewModel.entries[indexPath.row]
-  
+        let selectedEntry = fileManagerViewModel.entries[indexPath.row]
+        
         if (selectedEntry.isFolder) {
-            viewModel.changeDirectory(url: selectedEntry.url)
-            tableView.reloadData()
+            navigationController?.pushViewController(FileManagerViewController(fileManagerViewModel: FileManagerFactory.displayAtPath(selectedEntry.url)), animated: true)
         }
         else {
             
         }
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+       
+        let deleteAction = UIContextualAction(style: .destructive,
+                                       title: "Del") { [weak self] (action, view, completionHandler) in
+            self?.moveToTrash(indexPath: indexPath)
+            completionHandler(true)
+        }
+        deleteAction.backgroundColor = .systemRed
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        
+        return configuration
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -122,12 +171,12 @@ extension FileManagerViewController : UITableViewDelegate {
 
 extension FileManagerViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.entries.count
+        return fileManagerViewModel.entries.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = FileManagerTableViewCell(style: .default, reuseIdentifier: nil)
-        cell.fileSystemEntry = viewModel.entries[indexPath.row]
+        cell.fileSystemEntry = fileManagerViewModel.entries[indexPath.row]
         return cell
     }
 }

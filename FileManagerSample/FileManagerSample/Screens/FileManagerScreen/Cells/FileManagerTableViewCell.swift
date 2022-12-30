@@ -31,11 +31,8 @@ final class FileManagerTableViewCell : UITableViewCell {
     var fileSystemEntry: FileSystemEntry? {
         didSet {
             guard let entry = fileSystemEntry else { return }
-            
-            if (entry.isSystem) {
-                entryTypeImage.image = UIImage(systemName: "arrowshape.turn.up.left")
-                
-            } else if (entry.isFolder) {
+          
+            if (entry.isFolder) {
                 entryTypeImage.image = UIImage(systemName: "folder")
                 titleLabel.text = entry.name
             }

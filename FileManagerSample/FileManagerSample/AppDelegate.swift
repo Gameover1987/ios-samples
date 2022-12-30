@@ -11,9 +11,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let window = UIWindow()
         self.window = window
 
-        let fileManagerViewModel = FileManagerViewModel(fileSystemProvider: FileSystemProvider.shared)
-        fileManagerViewModel.changeDirectory(url: FileSystemProvider.shared.getDocumentsDirectory())
-        let fileManagerController = FileManagerViewController(viewModel: fileManagerViewModel)
+        let fileManagerViewModel = FileManagerFactory.displayAtPath(FileSystemProvider.shared.getDocumentsDirectory())
+        let fileManagerController = FileManagerViewController(fileManagerViewModel: fileManagerViewModel)
         
         let navigationController = UINavigationController(rootViewController: fileManagerController)
         navigationController.navigationBar.prefersLargeTitles = true

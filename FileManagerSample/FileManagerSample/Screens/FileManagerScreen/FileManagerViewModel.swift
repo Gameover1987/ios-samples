@@ -15,7 +15,7 @@ final class FileManagerViewModel {
     func changeDirectory(url: URL) {
         do {
             currentDirectory = url
-            try refresh()
+            try loadContentsOfCurrentDirectory()
         } catch {
             
         }
@@ -28,8 +28,8 @@ final class FileManagerViewModel {
         
         do {
             try fileSystemProvider.saveImageToFile(image: image,
-                                               folderUrl: currentDirectory)
-            try refresh()
+                                                   folderUrl: currentDirectory)
+            try loadContentsOfCurrentDirectory()
         } catch {
             
         }
@@ -43,28 +43,30 @@ final class FileManagerViewModel {
  
         do {
             try fileSystemProvider.createDirectory(directoryUrl: currentDirectory.appendingPathComponent(directoryName))
-            try refresh()
+            try loadContentsOfCurrentDirectory()
         } catch {
             
         }
         
     }
     
-    private func refresh() throws {
+    func deleteEntry(position: Int) {
+        let entry = entries[position]
+        
+        do {
+            try fileSystemProvider.delete(url: entry.url)
+            try loadContentsOfCurrentDirectory()
+        } catch {
+            
+        }
+        
+    }
+    
+    private func loadContentsOfCurrentDirectory() throws {
         
         guard let currentDirectory = currentDirectory else {return}
         
-        entries.removeAll()
-        
-        if (currentDirectory != fileSystemProvider.getDocumentsDirectory()) {
-            entries.append(FileSystemEntry(url: currentDirectory.deletingLastPathComponent(), isSystem: true))
-        }
-        
         let items = try fileSystemProvider.getContentsOfDirectory(path: currentDirectory.relativePath)
-           
-        let systemItems = items.filter { item in
-            item.isSystem
-        }
         
         let folders = items.filter { item in
             item.isFolder
@@ -74,7 +76,6 @@ final class FileManagerViewModel {
             !item.isFolder
         }.sorted(by: { $0.name < $1.name })
             
-        
-        entries.append(contentsOf: systemItems + folders + files)
+        entries = folders + files
     }
 }

@@ -4,6 +4,17 @@ import UIKit
 
 final class AddFolderViewController : UIViewController {
     
+    private let fileManagerViewModel: FileManagerViewModel
+    
+    init(fileManagerViewModel: FileManagerViewModel) {
+        self.fileManagerViewModel = fileManagerViewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
+    
     private lazy var textField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Folder name"
@@ -25,6 +36,8 @@ final class AddFolderViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(systemItem: .cancel)
+        
         view.addSubview(textField)
         view.addSubview(okButton)
         
@@ -44,18 +57,16 @@ final class AddFolderViewController : UIViewController {
         textChanged()
     }
     
-    func getFolderName() -> String {
-        return textField.text!
-    }
+    public var createDirectoryAction: ((_ directoryName: String) -> Void)?
     
-    @objc func textChanged() {
+    @objc private func textChanged() {
         okButton.isEnabled = textField.hasText
     }
     
-    @objc func okAction() {
-        let dataDict:[String: String] = ["folderName": getFolderName()]
+    @objc private func okAction() {
         
-        NotificationCenter.default.post(name: NSNotification.Name(NotificationNames.createDirectory.rawValue), object: nil, userInfo: dataDict)
+        createDirectoryAction?(textField.text!)
+        
         self.dismiss(animated: true, completion: nil)
     }
 }

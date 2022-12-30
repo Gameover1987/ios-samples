@@ -15,6 +15,7 @@
 		80EFA3C0294B8E8D00B38E7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EFA3BF294B8E8D00B38E7F /* AppDelegate.swift */; };
 		80EFA3C4294B8E8D00B38E7F /* FileManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EFA3C3294B8E8D00B38E7F /* FileManagerViewController.swift */; };
 		80EFA3C9294B8E8E00B38E7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80EFA3C8294B8E8E00B38E7F /* Assets.xcassets */; };
+		80F6E381295F0C900031086B /* FileManagerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F6E380295F0C900031086B /* FileManagerFactory.swift */; };
 		80FEC8F6294EEED100018DD8 /* FileManagerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FEC8F5294EEED100018DD8 /* FileManagerTableViewCell.swift */; };
 		80FEC8F8294F06A100018DD8 /* NotificationNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FEC8F7294F06A100018DD8 /* NotificationNames.swift */; };
 /* End PBXBuildFile section */
@@ -32,6 +33,7 @@
 		80EFA3C3294B8E8D00B38E7F /* FileManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerViewController.swift; sourceTree = "<group>"; };
 		80EFA3C8294B8E8E00B38E7F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		80EFA3CD294B8E8E00B38E7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		80F6E380295F0C900031086B /* FileManagerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerFactory.swift; sourceTree = "<group>"; };
 		80FEC8F5294EEED100018DD8 /* FileManagerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerTableViewCell.swift; sourceTree = "<group>"; };
 		80FEC8F7294F06A100018DD8 /* NotificationNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNames.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -81,6 +83,7 @@
 				80EFA3C3294B8E8D00B38E7F /* FileManagerViewController.swift */,
 				80DB7E05294C5C4400BDEE40 /* FileManagerViewModel.swift */,
 				80FEC8F7294F06A100018DD8 /* NotificationNames.swift */,
+				80F6E380295F0C900031086B /* FileManagerFactory.swift */,
 			);
 			path = FileManagerScreen;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				80FEC8F8294F06A100018DD8 /* NotificationNames.swift in Sources */,
 				80EFA3C4294B8E8D00B38E7F /* FileManagerViewController.swift in Sources */,
 				80EFA3C0294B8E8D00B38E7F /* AppDelegate.swift in Sources */,
+				80F6E381295F0C900031086B /* FileManagerFactory.swift in Sources */,
 				80DB7E06294C5C4400BDEE40 /* FileManagerViewModel.swift in Sources */,
 				80DB7E00294C5B6900BDEE40 /* FileSystemProviderProtocol.swift in Sources */,
 				80FEC8F6294EEED100018DD8 /* FileManagerTableViewCell.swift in Sources */,

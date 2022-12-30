@@ -10,9 +10,12 @@ protocol FileSystemProviderProtocol {
     func createDirectory(directoryUrl: URL) throws
     
     func saveImageToFile(image: UIImage, folderUrl: URL) throws
+    
+    func delete(url: URL) throws
 }
 
 final class FileSystemProvider : FileSystemProviderProtocol {
+    
     static let shared: FileSystemProvider = .init()
     
     private init() {
@@ -48,6 +51,10 @@ final class FileSystemProvider : FileSystemProviderProtocol {
         let imageData = image.jpegData(compressionQuality: 1.0)
         
         FileManager.default.createFile(atPath: pathToImage.relativePath, contents: imageData)
+    }
+    
+    func delete(url: URL) throws {
+        try FileManager.default.removeItem(at: url)
     }
 }
 
