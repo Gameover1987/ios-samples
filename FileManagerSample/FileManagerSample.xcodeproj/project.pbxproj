@@ -13,6 +13,8 @@
 		80419C6E2961FD6C004740A2 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80419C6D2961FD6C004740A2 /* Settings.swift */; };
 		80419C702961FD98004740A2 /* SettingsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80419C6F2961FD98004740A2 /* SettingsProtocol.swift */; };
 		80419C7329620D0E004740A2 /* SortingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80419C7229620D0E004740A2 /* SortingViewController.swift */; };
+		80419C7529621E14004740A2 /* EnterPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80419C7429621E14004740A2 /* EnterPasswordViewController.swift */; };
+		80419C7729622328004740A2 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80419C7629622328004740A2 /* UIViewControllerExtensions.swift */; };
 		80BC28E22961DF3500B8995E /* FileSystemProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BC28E12961DF3500B8995E /* FileSystemProvider.swift */; };
 		80BC28E82961E14C00B8995E /* OpenImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BC28E72961E14C00B8995E /* OpenImageViewController.swift */; };
 		80C202D1294CBCBC00B1BA52 /* AddFolderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C202D0294CBCBC00B1BA52 /* AddFolderViewController.swift */; };
@@ -36,6 +38,8 @@
 		80419C6D2961FD6C004740A2 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		80419C6F2961FD98004740A2 /* SettingsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsProtocol.swift; sourceTree = "<group>"; };
 		80419C7229620D0E004740A2 /* SortingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingViewController.swift; sourceTree = "<group>"; };
+		80419C7429621E14004740A2 /* EnterPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPasswordViewController.swift; sourceTree = "<group>"; };
+		80419C7629622328004740A2 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		80BC28E12961DF3500B8995E /* FileSystemProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystemProvider.swift; sourceTree = "<group>"; };
 		80BC28E72961E14C00B8995E /* OpenImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenImageViewController.swift; sourceTree = "<group>"; };
 		80C202D0294CBCBC00B1BA52 /* AddFolderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFolderViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				80419C682961F410004740A2 /* CreatePasswordViewController.swift */,
+				80419C7429621E14004740A2 /* EnterPasswordViewController.swift */,
 			);
 			path = PasswordScreen;
 			sourceTree = "<group>";
@@ -175,6 +180,7 @@
 				80EFA3CD294B8E8E00B38E7F /* Info.plist */,
 				80DB7DFE294C5B4C00BDEE40 /* Model */,
 				80DB7E03294C5C2000BDEE40 /* Screens */,
+				80419C7629622328004740A2 /* UIViewControllerExtensions.swift */,
 			);
 			path = FileManagerSample;
 			sourceTree = "<group>";
@@ -313,12 +319,14 @@
 				80C202D1294CBCBC00B1BA52 /* AddFolderViewController.swift in Sources */,
 				80FEC8F8294F06A100018DD8 /* NotificationNames.swift in Sources */,
 				80EFA3C4294B8E8D00B38E7F /* FileManagerViewController.swift in Sources */,
+				80419C7729622328004740A2 /* UIViewControllerExtensions.swift in Sources */,
 				80EFA3C0294B8E8D00B38E7F /* AppDelegate.swift in Sources */,
 				80BC28E82961E14C00B8995E /* OpenImageViewController.swift in Sources */,
 				80F6E381295F0C900031086B /* FileManagerFactory.swift in Sources */,
 				80DB7E06294C5C4400BDEE40 /* FileManagerViewModel.swift in Sources */,
 				80419C692961F410004740A2 /* CreatePasswordViewController.swift in Sources */,
 				80DB7E00294C5B6900BDEE40 /* FileSystemProviderProtocol.swift in Sources */,
+				80419C7529621E14004740A2 /* EnterPasswordViewController.swift in Sources */,
 				80BC28E22961DF3500B8995E /* FileSystemProvider.swift in Sources */,
 				80419C7329620D0E004740A2 /* SortingViewController.swift in Sources */,
 				80419C6C2961F7AB004740A2 /* SettingsViewController.swift in Sources */,

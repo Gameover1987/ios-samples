@@ -1,7 +1,11 @@
 
 import Foundation
+import KeychainAccess
 
 class Settings : SettingsProtocol {
+    
+    private let keychainAppName = "com.never_Soft.FileManager"
+    private let keychainPasswordPath = "com.never_Soft.FileManager.Password2"
     
     public static var shared: Settings = .init()
     
@@ -25,5 +29,14 @@ class Settings : SettingsProtocol {
         
     }
     
-    var isPasswordSet: Bool = false
+    var password: String? {
+        get {
+            let keychain = Keychain(service: keychainAppName)
+            return keychain[keychainPasswordPath]
+        }
+        set {
+            let keychain = Keychain(service: keychainAppName)
+            keychain[keychainPasswordPath] = newValue
+        }
+    }
 }

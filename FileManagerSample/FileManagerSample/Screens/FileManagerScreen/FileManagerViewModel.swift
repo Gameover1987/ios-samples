@@ -19,7 +19,7 @@ final class FileManagerViewModel {
             currentDirectory = url
             try loadContentsOfCurrentDirectory()
         } catch {
-            
+            print(error)
         }
     }
     
@@ -33,7 +33,7 @@ final class FileManagerViewModel {
                                                    folderUrl: currentDirectory)
             try loadContentsOfCurrentDirectory()
         } catch {
-            
+            print(error)
         }
     }
     
@@ -47,7 +47,7 @@ final class FileManagerViewModel {
             try fileSystemProvider.createDirectory(directoryUrl: currentDirectory.appendingPathComponent(directoryName))
             try loadContentsOfCurrentDirectory()
         } catch {
-            
+            print(error)
         }
         
     }
@@ -59,7 +59,7 @@ final class FileManagerViewModel {
             try fileSystemProvider.delete(url: entry.url)
             try loadContentsOfCurrentDirectory()
         } catch {
-            
+            print(error)
         }
         
     }

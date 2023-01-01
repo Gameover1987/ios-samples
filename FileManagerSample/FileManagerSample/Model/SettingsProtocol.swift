@@ -10,5 +10,5 @@ enum SortingMode: String, CaseIterable {
 protocol SettingsProtocol {
     var sortingMode: SortingMode {get set}
     
-    var isPasswordSet: Bool {get}
+    var password: String? {get set}
 }

@@ -1,8 +1,7 @@
 
 import UIKit
-import SnapKit
 
-class CreatePasswordViewController: UIViewController {
+class EnterPasswordViewController: UIViewController {
 
     private var settings: SettingsProtocol
     
@@ -19,16 +18,18 @@ class CreatePasswordViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        title = "Changing pasword"
-        
+
         view.backgroundColor = .white
         
-        view.addSubview(titleLabel)
+        title = "Enter filemanager password"
+        
+        if (navigationController == nil) {
+            view.addSubview(titleLabel)
+        }
+        
         view.addSubview(passwordTextField)
-        view.addSubview(passwordAgainTextField)
-        view.addSubview(changePasswordButton)
-      
+        view.addSubview(checkPassowordButton)
+        
         if (navigationController == nil) {
             titleLabel.snp.makeConstraints { make in
                 make.left.top.right.equalTo(view.safeAreaLayoutGuide).inset(8)
@@ -46,15 +47,9 @@ class CreatePasswordViewController: UIViewController {
             }
         }
         
-        passwordAgainTextField.snp.makeConstraints { make in
+        checkPassowordButton.snp.makeConstraints { make in
             make.left.right.equalTo(view.safeAreaLayoutGuide).inset(8)
-            make.top.equalTo(passwordTextField.snp.bottom).inset(8)
-            make.height.equalTo(50)
-        }
-        
-        changePasswordButton.snp.makeConstraints { make in
-            make.left.right.equalTo(view.safeAreaLayoutGuide).inset(8)
-            make.top.equalTo(passwordAgainTextField.snp.bottom).offset(8)
+            make.top.equalTo(passwordTextField.snp.bottom).offset(8)
             make.height.equalTo(40)
         }
         
@@ -63,7 +58,7 @@ class CreatePasswordViewController: UIViewController {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Create file manager password"
+        label.text = "File manager access"
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 18)
         return label
@@ -80,37 +75,26 @@ class CreatePasswordViewController: UIViewController {
         return passwordTextFileld
     }()
     
-    private lazy var passwordAgainTextField: UITextField = {
-        let passwordTextFileld = UITextField()
-        passwordTextFileld.backgroundColor = .systemGray6.withAlphaComponent(0.1)
-        passwordTextFileld.textColor = .black
-        passwordTextFileld.placeholder = "Password again"
-        passwordTextFileld.font = .systemFont(ofSize: 16.0)
-        passwordTextFileld.isSecureTextEntry = true
-        passwordTextFileld.addTarget(self, action: #selector(passwordsTextChanged), for: .editingChanged)
-        return passwordTextFileld
-    }()
-    
-    private lazy var changePasswordButton: UIButton = {
+    private lazy var checkPassowordButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 15
         button.backgroundColor = .black
-        button.setTitle("Let's do it", for: .normal)
+        button.setTitle("Check passoword, and go on", for: .normal)
         button.setTitleColor(.gray, for: .disabled)
-        button.addTarget(self, action: #selector(changePasswordAction), for: .touchUpInside)
+        button.addTarget(self, action: #selector(checkPassowordButtonAction), for: .touchUpInside)
         return button
     }()
     
-    @objc private func passwordsTextChanged() {
+    @objc private func passwordsTextChanged(){
         checkChangePasswordButtonState()
     }
     
-    @objc private func changePasswordAction() {
+    @objc private func checkPassowordButtonAction() {
+        let enteredPassword = passwordTextField.text
+        let savedPassword = settings.password
         
-        settings.password = passwordTextField.text
-        
-        if navigationController == nil {
+        if (enteredPassword == savedPassword) {
             let fileManagerViewModel = FileManagerFactory.displayAtPath(FileSystemProvider.shared.getDocumentsDirectory())
             let fileManagerController = FileManagerViewController(fileManagerViewModel: fileManagerViewModel)
             let navigationController = UINavigationController(rootViewController: fileManagerController)
@@ -118,18 +102,12 @@ class CreatePasswordViewController: UIViewController {
             navigationController.modalPresentationStyle = .fullScreen
             self.present(navigationController, animated: true)
         } else {
-            navigationController?.popViewController(animated: true)
+            self.showAlert(title: "File manager access", message: "Wrong password")
         }
     }
     
     private func checkChangePasswordButtonState() {
-        let isEnabled = passwordTextField.hasText &&
-                        passwordTextField.text!.count >= 4 &&
-                        passwordAgainTextField.hasText &&
-                        passwordAgainTextField.text!.count >= 4 &&
-                        passwordTextField.text == passwordAgainTextField.text
-        
-        changePasswordButton.isEnabled = isEnabled
+        let isEnabled = passwordTextField.hasText
+        checkPassowordButton.isEnabled = isEnabled
     }
-    
 }

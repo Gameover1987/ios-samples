@@ -1,5 +1,6 @@
 
 import UIKit
+import KeychainAccess
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -10,14 +11,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let window = UIWindow()
         self.window = window
-
-        let fileManagerViewModel = FileManagerFactory.displayAtPath(FileSystemProvider.shared.getDocumentsDirectory())
-        let fileManagerController = FileManagerViewController(fileManagerViewModel: fileManagerViewModel)
         
-        let navigationController = UINavigationController(rootViewController: fileManagerController)
-        navigationController.navigationBar.prefersLargeTitles = true
+        let savedPassword = Settings.shared.password
+        if (savedPassword == nil) {
+            window.rootViewController = CreatePasswordViewController(settings: Settings.shared)
+        } else {
+            window.rootViewController = EnterPasswordViewController(settings: Settings.shared)
+        }
         
-        window.rootViewController = navigationController
         window.makeKeyAndVisible()
         
         return true

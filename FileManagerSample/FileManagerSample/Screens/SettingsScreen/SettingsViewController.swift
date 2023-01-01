@@ -47,12 +47,12 @@ class SettingsViewController: UIViewController {
 extension SettingsViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.row == 0) {
-            let sortingViewController = SortingViewController(settings: Settings.shared)
+            let sortingViewController = SortingViewController(settings: settings)
             navigationController?.pushViewController(sortingViewController, animated: true)
         }
         
         if (indexPath.row == 1) {
-            let createPasswordViewController = CreatePasswordViewController()
+            let createPasswordViewController = CreatePasswordViewController(settings: settings)
             navigationController?.pushViewController(createPasswordViewController, animated: true)
         }
     }

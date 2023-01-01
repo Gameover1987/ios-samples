@@ -54,9 +54,7 @@ extension SortingViewController: UITableViewDelegate {
         let sortingMode: SortingMode = SortingMode.allCases[indexPath.row]
         self.settings.sortingMode = sortingMode
         
-        print(self.settings.sortingMode)
-        
-        tableView.reloadData()
+        navigationController?.popViewController(animated: true)
     }
     
 }
