@@ -147,7 +147,9 @@ extension FileManagerViewController : UITableViewDelegate {
             navigationController?.pushViewController(FileManagerViewController(fileManagerViewModel: FileManagerFactory.displayAtPath(selectedEntry.url)), animated: true)
         }
         else {
-            
+            let openImageViewController = OpenImageViewController(fileSystemProvider: FileSystemProvider.shared)
+            openImageViewController.openImage(url: selectedEntry.url)
+            self.present(openImageViewController, animated: true, completion: nil)
         }
     }
     
