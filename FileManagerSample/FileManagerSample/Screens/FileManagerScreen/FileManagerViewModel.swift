@@ -4,9 +4,11 @@ import UIKit
 
 final class FileManagerViewModel {
     private let fileSystemProvider: FileSystemProviderProtocol
+    private let settings: SettingsProtocol
     
-    init(fileSystemProvider: FileSystemProviderProtocol) {
+    init(fileSystemProvider: FileSystemProviderProtocol, settings: SettingsProtocol) {
         self.fileSystemProvider = fileSystemProvider
+        self.settings = settings
     }
     
     var currentDirectory: URL? = nil
@@ -62,20 +64,41 @@ final class FileManagerViewModel {
         
     }
     
+    func applySettings() {
+ 
+        do {
+            try loadContentsOfCurrentDirectory()
+        } catch {
+            
+        }
+    }
+    
     private func loadContentsOfCurrentDirectory() throws {
         
         guard let currentDirectory = currentDirectory else {return}
         
+        let sortingMode = settings.sortingMode
         let items = try fileSystemProvider.getContentsOfDirectory(path: currentDirectory.relativePath)
         
         let folders = items.filter { item in
             item.isFolder
-        }.sorted(by: { $0.name < $1.name })
+        }.sorted(by: { sortUsingSettings(sortingMode: sortingMode, nameA: $0.name, nameB: $1.name) })
         
         let files = items.filter { item in
             !item.isFolder
-        }.sorted(by: { $0.name < $1.name })
-            
+        }.sorted(by: { sortUsingSettings(sortingMode: sortingMode, nameA: $0.name, nameB: $1.name) })
+        
         entries = folders + files
+    }
+    
+    private func sortUsingSettings(sortingMode: SortingMode, nameA: String, nameB: String) -> Bool {
+        switch sortingMode {
+        case .none:
+            return nameA == nameB
+        case .alphabeticalAscending:
+            return nameA < nameB
+        case .alphabeticalDescending:
+            return nameA > nameB
+        }
     }
 }

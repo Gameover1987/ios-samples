@@ -16,17 +16,18 @@ class FileManagerViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         setupUI()
     }
     
-    @objc private func createDirectoryNotificationHandler(notification: Notification) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        if let folderName = notification.userInfo?["folderName"] as? String {
-            fileManagerViewModel.createDirectory(directoryName: folderName)
-            tableView.reloadData()
-        }
+        fileManagerViewModel.applySettings()
+        
+        tableView.reloadData()
     }
     
     private lazy var searchField: UISearchTextField = {
@@ -74,6 +75,8 @@ class FileManagerViewController: UIViewController {
                 
         self.title = fileManagerViewModel.currentDirectory?.lastPathComponent
         
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Settings", style: .plain, target: self, action: #selector(settingsButtonAction))
+        
         view.addSubview(searchField)
         view.addSubview(tableView)
         view.addSubview(addFolderButton)
@@ -101,6 +104,11 @@ class FileManagerViewController: UIViewController {
             maker.width.equalTo(50)
             maker.height.equalTo(50)
         }
+    }
+    
+    @objc private func settingsButtonAction() {
+        let settingsViewController = SettingsViewController(settings: Settings.shared)
+        navigationController?.pushViewController(settingsViewController, animated: true)
     }
     
     @objc private func addImageFromGallery() {
