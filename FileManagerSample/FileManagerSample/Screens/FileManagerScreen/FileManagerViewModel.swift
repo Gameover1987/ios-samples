@@ -11,7 +11,7 @@ final class FileManagerViewModel {
         self.settings = settings
     }
     
-    var currentDirectory: URL? = nil
+    var currentDirectory: URL?
     var entries = [FileSystemEntry]()
     
     func changeDirectory(url: URL) {

@@ -4,7 +4,7 @@ import UIKit
 
 final class FileSystemProvider : FileSystemProviderProtocol {
     
-    static let shared: FileSystemProvider = .init()
+    static let shared = FileSystemProvider()
     
     private init() {
         

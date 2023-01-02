@@ -24,7 +24,6 @@ final class AddFolderViewController : UIViewController {
     
     private lazy var okButton: UIButton = {
         let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 15
         button.backgroundColor = .black
         button.setTitle("Let's do it", for: .normal)

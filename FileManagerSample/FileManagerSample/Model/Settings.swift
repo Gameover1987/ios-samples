@@ -2,12 +2,12 @@
 import Foundation
 import KeychainAccess
 
-class Settings : SettingsProtocol {
+final class Settings : SettingsProtocol {
     
     private let keychainAppName = "com.never_Soft.FileManager"
     private let keychainPasswordPath = "com.never_Soft.FileManager.Password2"
     
-    public static var shared: Settings = .init()
+    static let shared = Settings()
     
     private init() {
         

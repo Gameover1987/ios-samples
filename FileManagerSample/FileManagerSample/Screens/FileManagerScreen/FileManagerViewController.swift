@@ -2,7 +2,7 @@
 import UIKit
 import SnapKit
 
-class FileManagerViewController: UIViewController {
+final class FileManagerViewController: UIViewController {
     
     private let fileManagerViewModel: FileManagerViewModel
     
