@@ -92,11 +92,11 @@
             </objects>
             <point key="canvasLocation" x="3819" y="-90"/>
         </scene>
-        <!--Notes-->
+        <!--All Notes-->
         <scene sceneID="KG6-NS-ijY">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ixa-0p-uZu" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Notes" image="note.text" catalog="system" id="afo-Et-xW0"/>
+                    <tabBarItem key="tabBarItem" title="All Notes" image="note.text" catalog="system" id="afo-Et-xW0"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="DVo-aC-G6T">
                         <rect key="frame" x="0.0" y="47" width="428" height="44"/>
@@ -122,8 +122,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="ixa-0p-uZu" kind="relationship" relationship="viewControllers" id="rCM-TH-vA1"/>
-                        <segue destination="r80-y1-yNs" kind="relationship" relationship="viewControllers" id="Bpn-sD-Ft4"/>
+                        <segue destination="r80-y1-yNs" kind="relationship" relationship="viewControllers" id="6P7-G6-Jp6"/>
+                        <segue destination="ixa-0p-uZu" kind="relationship" relationship="viewControllers" id="3iP-BJ-YZZ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G9l-AH-4s7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
