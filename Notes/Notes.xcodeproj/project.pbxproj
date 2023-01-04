@@ -7,8 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		80013DFB2965948E009CE078 /* Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80013DFA2965948E009CE078 /* Folder.swift */; };
+		80013DFD2965D602009CE078 /* FoldersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80013DFC2965D602009CE078 /* FoldersViewController.swift */; };
+		8052AC1F2965E4BE00BBAA25 /* TextPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8052AC1E2965E4BE00BBAA25 /* TextPicker.swift */; };
 		805939AB29657F6B0065C09C /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805939AA29657F6B0065C09C /* NotesViewController.swift */; };
 		805939AD29657F910065C09C /* OneNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805939AC29657F910065C09C /* OneNoteViewController.swift */; };
+		805939AF2965860F0065C09C /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805939AE2965860F0065C09C /* Note.swift */; };
+		805939B12965878D0065C09C /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805939B02965878D0065C09C /* DateExtensions.swift */; };
 		80DFB7FD2965758E00BE8BC5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DFB7FC2965758E00BE8BC5 /* AppDelegate.swift */; };
 		80DFB7FF2965758E00BE8BC5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DFB7FE2965758E00BE8BC5 /* SceneDelegate.swift */; };
 		80DFB8042965758E00BE8BC5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80DFB8022965758E00BE8BC5 /* Main.storyboard */; };
@@ -19,8 +24,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		80013DFA2965948E009CE078 /* Folder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Folder.swift; sourceTree = "<group>"; };
+		80013DFC2965D602009CE078 /* FoldersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoldersViewController.swift; sourceTree = "<group>"; };
+		8052AC1E2965E4BE00BBAA25 /* TextPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPicker.swift; sourceTree = "<group>"; };
 		805939AA29657F6B0065C09C /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 		805939AC29657F910065C09C /* OneNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneNoteViewController.swift; sourceTree = "<group>"; };
+		805939AE2965860F0065C09C /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		805939B02965878D0065C09C /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		80DFB7F92965758E00BE8BC5 /* Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80DFB7FC2965758E00BE8BC5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		80DFB7FE2965758E00BE8BC5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +53,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8052AC1D2965E49800BBAA25 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				805939B02965878D0065C09C /* DateExtensions.swift */,
+				8052AC1E2965E4BE00BBAA25 /* TextPicker.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		80DFB7F02965758E00BE8BC5 = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +81,7 @@
 		80DFB7FB2965758E00BE8BC5 /* Notes */ = {
 			isa = PBXGroup;
 			children = (
+				8052AC1D2965E49800BBAA25 /* Helpers */,
 				80DFB8132965759600BE8BC5 /* CoreData */,
 				80DFB7FC2965758E00BE8BC5 /* AppDelegate.swift */,
 				80DFB7FE2965758E00BE8BC5 /* SceneDelegate.swift */,
@@ -71,6 +91,7 @@
 				80DFB80D2965758F00BE8BC5 /* Info.plist */,
 				805939AA29657F6B0065C09C /* NotesViewController.swift */,
 				805939AC29657F910065C09C /* OneNoteViewController.swift */,
+				80013DFC2965D602009CE078 /* FoldersViewController.swift */,
 			);
 			path = Notes;
 			sourceTree = "<group>";
@@ -80,6 +101,8 @@
 			children = (
 				80DFB8052965758E00BE8BC5 /* Notes.xcdatamodeld */,
 				80DFB814296575AB00BE8BC5 /* CoreDataManager.swift */,
+				805939AE2965860F0065C09C /* Note.swift */,
+				80013DFA2965948E009CE078 /* Folder.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -157,10 +180,15 @@
 			files = (
 				80DFB7FD2965758E00BE8BC5 /* AppDelegate.swift in Sources */,
 				805939AD29657F910065C09C /* OneNoteViewController.swift in Sources */,
+				805939AF2965860F0065C09C /* Note.swift in Sources */,
 				805939AB29657F6B0065C09C /* NotesViewController.swift in Sources */,
 				80DFB7FF2965758E00BE8BC5 /* SceneDelegate.swift in Sources */,
+				805939B12965878D0065C09C /* DateExtensions.swift in Sources */,
+				80013DFD2965D602009CE078 /* FoldersViewController.swift in Sources */,
 				80DFB815296575AB00BE8BC5 /* CoreDataManager.swift in Sources */,
 				80DFB8072965758E00BE8BC5 /* Notes.xcdatamodeld in Sources */,
+				80013DFB2965948E009CE078 /* Folder.swift in Sources */,
+				8052AC1F2965E4BE00BBAA25 /* TextPicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

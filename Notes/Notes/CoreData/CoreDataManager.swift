@@ -7,6 +7,7 @@ final class CoreDataManager {
     
     private init () {
         fetchNotes()
+        fetchFolders()
     }
     
     private lazy var persistentContainer: NSPersistentContainer = {
@@ -37,10 +38,15 @@ final class CoreDataManager {
     }
     
     var notes: [Note] = []
+    var folders: [Folder] = []
     
     private func fetchNotes() {
         let request = Note.fetchRequest()
         do {
+            request.sortDescriptors = [
+            NSSortDescriptor(key: "updatedAt", ascending: false),
+            NSSortDescriptor(key: "createdAt", ascending: true)
+            ]
             self.notes = try persistentContainer.viewContext.fetch(request)
         }
         catch {
@@ -48,15 +54,32 @@ final class CoreDataManager {
         }
     }
     
-    func addNote() {
+    func addNote(to folder: Folder?) -> Note {
         let note = Note(context: persistentContainer.viewContext)
         note.text = "Preved ia zametko!"
         note.createdAt = Date()
         note.updatedAt = Date()
+        note.folder = folder
+        folder?.updatedAt = Date()
         
         saveContext()
         
         fetchNotes()
+        
+        return note
+    }
+    
+    private func fetchFolders() {
+        let request = Folder.fetchRequest()
+        do {
+            request.sortDescriptors = [
+            NSSortDescriptor(key: "updatedAt", ascending: false),
+            NSSortDescriptor(key: "name", ascending: true)
+            ]
+            folders = try persistentContainer.viewContext.fetch(request)
+        } catch {
+            print(error)
+        }
     }
     
     func deleteNote(note: Note) {
@@ -67,5 +90,19 @@ final class CoreDataManager {
         fetchNotes()
     }
     
+    func addFolder(name: String) {
+        let folder = Folder(context: persistentContainer.viewContext)
+        folder.createAt = Date()
+        folder.updatedAt = Date()
+        folder.name = name
+        saveContext()
+        fetchFolders()
+    }
     
+    func deleteFolder(folder: Folder) {
+        persistentContainer.viewContext.delete(folder)
+        saveContext()
+        fetchFolders()
+        fetchNotes()
+    }
 }

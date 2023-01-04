@@ -7,23 +7,31 @@
 
 import UIKit
 
-class OneNoteViewController: UIViewController {
+final class OneNoteViewController: UIViewController {
 
+    var note: Note!
+    
+    @IBOutlet weak var textView: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        textView.text = note.text
+        textView.delegate = self
+        textView.becomeFirstResponder()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if !textView.hasText {
+            CoreDataManager.shared.deleteNote(note: note)
+        }
     }
-    */
+}
 
+extension OneNoteViewController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        note.setText(text: textView.text)
+    }
 }
