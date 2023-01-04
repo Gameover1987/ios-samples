@@ -10,10 +10,10 @@ import UIKit
 class NotesViewController: UITableViewController {
 
     private var currentNote: Note!
-    private var currentFolder: Folder?
+    private var currentCategory: Category?
     
     private var notes: [Note] {
-        if let currentFolder = currentFolder {
+        if let currentFolder = currentCategory {
             return currentFolder.notesSorted
         }
         
@@ -23,8 +23,8 @@ class NotesViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let currentFolder = currentFolder {
-            navigationItem.title = currentFolder.name
+        if let currentCategory = currentCategory {
+            navigationItem.title = currentCategory.name
         } else
         {
             navigationItem.title = "Notes"
@@ -44,7 +44,7 @@ class NotesViewController: UITableViewController {
     }
 
     @IBAction func pushAddAction(_ sender: Any) {
-        self.currentNote = CoreDataManager.shared.addNote(to: currentFolder)
+        self.currentNote = CoreDataManager.shared.addNote(to: currentCategory)
         performSegue(withIdentifier: "goToOneNoteController", sender: self)
     }
     
@@ -81,8 +81,8 @@ class NotesViewController: UITableViewController {
         (segue.destination as? OneNoteViewController)?.note = currentNote
     }
     
-    func setFolder(folder: Folder) {
-        self.currentFolder = folder
+    func setCategory(_ category: Category) {
+        self.currentCategory = category
     }
 
 }

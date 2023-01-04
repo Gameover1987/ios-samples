@@ -1,11 +1,11 @@
 
 import UIKit
 
-class FoldersViewController: UITableViewController {
+class CategoriesViewController: UITableViewController {
     
     @IBAction func addFolderAction(_ sender: Any) {
         
-        TextPicker.shared.showIn(viewController: self, title: "Add folder", placeHolder: "Folder name") { text in
+        TextPicker.shared.showIn(viewController: self, title: "Add category", placeHolder: "Category") { text in
             CoreDataManager.shared.addFolder(name: text)
             self.tableView.reloadData()
         }
@@ -25,16 +25,16 @@ class FoldersViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return CoreDataManager.shared.folders.count
+        return CoreDataManager.shared.categories.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        let folder = CoreDataManager.shared.folders[indexPath.row]
+        let category = CoreDataManager.shared.categories[indexPath.row]
         
-        cell.textLabel?.text = folder.name
-        let details = folder.updatedAt!.getFormatted(format: "dd.MM.yyyy HH.mm.ss") + " \(folder.notes?.count ?? 0)"
+        cell.textLabel?.text = category.name
+        let details = category.updatedAt!.getFormatted(format: "dd.MM.yyyy HH.mm.ss") + " \(category.notes?.count ?? 0)"
         cell.detailTextLabel?.text = details
         
         return cell
@@ -42,8 +42,8 @@ class FoldersViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let folder = CoreDataManager.shared.folders[indexPath.row]
-            CoreDataManager.shared.deleteFolder(folder: folder)
+            let folder = CoreDataManager.shared.categories[indexPath.row]
+            CoreDataManager.shared.deleteCategory(category: folder)
             
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
@@ -53,23 +53,23 @@ class FoldersViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "goToNotesByFolder", sender: self)
+        performSegue(withIdentifier: "goToNotesByCategory", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let indexPathForSelectedRow = tableView.indexPathForSelectedRow else {return}
         
-        (segue.destination as? NotesViewController)?.setFolder(folder: CoreDataManager.shared.folders[indexPathForSelectedRow.row])
+        (segue.destination as? NotesViewController)?.setCategory(CoreDataManager.shared.categories[indexPathForSelectedRow.row])
     }
     
     @objc
     private func longPressGestureHandler(longPressGestureRecognizer: UILongPressGestureRecognizer) {
         let longPressPoint = longPressGestureRecognizer.location(in: tableView)
         guard let indexPath = tableView.indexPathForRow(at: longPressPoint) else {return}
-        let folder = CoreDataManager.shared.folders[indexPath.row]
+        let category = CoreDataManager.shared.categories[indexPath.row]
         
-        TextPicker.shared.showIn(viewController: self, title: "Folder renaming", message: folder.name ?? "") { text in
-            folder.changeName(newName: text)
+        TextPicker.shared.showIn(viewController: self, title: "Category renaming", message: category.name ?? "") { text in
+            category.changeName(newName: text)
             self.tableView.reloadData()
         }
     }

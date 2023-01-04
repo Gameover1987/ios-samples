@@ -1,7 +1,7 @@
 
 import Foundation
 
-extension Folder {
+extension Category {
     
     var notesSorted: [Note] {
         return notes?.sortedArray(using:[ NSSortDescriptor(key: "updatedAt", ascending: false),

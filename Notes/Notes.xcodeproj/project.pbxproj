@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		80013DFB2965948E009CE078 /* Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80013DFA2965948E009CE078 /* Folder.swift */; };
-		80013DFD2965D602009CE078 /* FoldersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80013DFC2965D602009CE078 /* FoldersViewController.swift */; };
+		80013DFD2965D602009CE078 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80013DFC2965D602009CE078 /* CategoriesViewController.swift */; };
 		8052AC1F2965E4BE00BBAA25 /* TextPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8052AC1E2965E4BE00BBAA25 /* TextPicker.swift */; };
 		805939AB29657F6B0065C09C /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805939AA29657F6B0065C09C /* NotesViewController.swift */; };
 		805939AD29657F910065C09C /* OneNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805939AC29657F910065C09C /* OneNoteViewController.swift */; };
@@ -25,7 +25,7 @@
 
 /* Begin PBXFileReference section */
 		80013DFA2965948E009CE078 /* Folder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Folder.swift; sourceTree = "<group>"; };
-		80013DFC2965D602009CE078 /* FoldersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoldersViewController.swift; sourceTree = "<group>"; };
+		80013DFC2965D602009CE078 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		8052AC1E2965E4BE00BBAA25 /* TextPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPicker.swift; sourceTree = "<group>"; };
 		805939AA29657F6B0065C09C /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 		805939AC29657F910065C09C /* OneNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneNoteViewController.swift; sourceTree = "<group>"; };
@@ -91,7 +91,7 @@
 				80DFB80D2965758F00BE8BC5 /* Info.plist */,
 				805939AA29657F6B0065C09C /* NotesViewController.swift */,
 				805939AC29657F910065C09C /* OneNoteViewController.swift */,
-				80013DFC2965D602009CE078 /* FoldersViewController.swift */,
+				80013DFC2965D602009CE078 /* CategoriesViewController.swift */,
 			);
 			path = Notes;
 			sourceTree = "<group>";
@@ -184,7 +184,7 @@
 				805939AB29657F6B0065C09C /* NotesViewController.swift in Sources */,
 				80DFB7FF2965758E00BE8BC5 /* SceneDelegate.swift in Sources */,
 				805939B12965878D0065C09C /* DateExtensions.swift in Sources */,
-				80013DFD2965D602009CE078 /* FoldersViewController.swift in Sources */,
+				80013DFD2965D602009CE078 /* CategoriesViewController.swift in Sources */,
 				80DFB815296575AB00BE8BC5 /* CoreDataManager.swift in Sources */,
 				80DFB8072965758E00BE8BC5 /* Notes.xcdatamodeld in Sources */,
 				80013DFB2965948E009CE078 /* Folder.swift in Sources */,

@@ -130,10 +130,10 @@
             </objects>
             <point key="canvasLocation" x="391.60305343511448" y="-89.436619718309871"/>
         </scene>
-        <!--Folders-->
+        <!--Categories-->
         <scene sceneID="2WK-O2-h0o">
             <objects>
-                <tableViewController id="yFD-3p-18s" customClass="FoldersViewController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="yFD-3p-18s" customClass="CategoriesViewController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="Zdv-AF-iha">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -169,7 +169,7 @@
                             <outlet property="delegate" destination="yFD-3p-18s" id="vRW-S0-DGE"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Folders" id="MMt-Bd-cF8">
+                    <navigationItem key="navigationItem" title="Categories" id="MMt-Bd-cF8">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="folder.badge.plus" catalog="system" id="bvs-wh-ZE6">
                             <connections>
                                 <action selector="addFolderAction:" destination="yFD-3p-18s" id="xZs-QY-Axe"/>
@@ -177,18 +177,18 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="IhX-bq-WlU" kind="show" identifier="goToNotesByFolder" id="ZqO-B3-0TA"/>
+                        <segue destination="IhX-bq-WlU" kind="show" identifier="goToNotesByCategory" id="ZqO-B3-0TA"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wKr-Rx-827" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2243" y="663"/>
         </scene>
-        <!--Folders-->
+        <!--Categories-->
         <scene sceneID="lKk-Z1-kJ3">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="r80-y1-yNs" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Folders" image="folder" catalog="system" id="GSV-yt-UE2"/>
+                    <tabBarItem key="tabBarItem" title="Categories" image="folder.fill" catalog="system" id="GSV-yt-UE2"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vCc-33-KQA">
                         <rect key="frame" x="0.0" y="47" width="428" height="44"/>
@@ -205,11 +205,11 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ZqO-B3-0TA"/>
+        <segue reference="mLh-59-34m"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="folder" catalog="system" width="128" height="96"/>
         <image name="folder.badge.plus" catalog="system" width="128" height="92"/>
+        <image name="folder.fill" catalog="system" width="128" height="96"/>
         <image name="note.text" catalog="system" width="128" height="107"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

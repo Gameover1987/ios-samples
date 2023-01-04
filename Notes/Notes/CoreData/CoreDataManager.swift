@@ -38,7 +38,7 @@ final class CoreDataManager {
     }
     
     var notes: [Note] = []
-    var folders: [Folder] = []
+    var categories: [Category] = []
     
     private func fetchNotes() {
         let request = Note.fetchRequest()
@@ -54,13 +54,13 @@ final class CoreDataManager {
         }
     }
     
-    func addNote(to folder: Folder?) -> Note {
+    func addNote(to category: Category?) -> Note {
         let note = Note(context: persistentContainer.viewContext)
         note.text = "Preved ia zametko!"
         note.createdAt = Date()
         note.updatedAt = Date()
-        note.folder = folder
-        folder?.updatedAt = Date()
+        note.category = category
+        category?.updatedAt = Date()
         
         saveContext()
         
@@ -70,13 +70,13 @@ final class CoreDataManager {
     }
     
     private func fetchFolders() {
-        let request = Folder.fetchRequest()
+        let request = Category.fetchRequest()
         do {
             request.sortDescriptors = [
             NSSortDescriptor(key: "updatedAt", ascending: false),
             NSSortDescriptor(key: "name", ascending: true)
             ]
-            folders = try persistentContainer.viewContext.fetch(request)
+            categories = try persistentContainer.viewContext.fetch(request)
         } catch {
             print(error)
         }
@@ -91,16 +91,16 @@ final class CoreDataManager {
     }
     
     func addFolder(name: String) {
-        let folder = Folder(context: persistentContainer.viewContext)
-        folder.createAt = Date()
+        let folder = Category(context: persistentContainer.viewContext)
+        folder.createdAt = Date()
         folder.updatedAt = Date()
         folder.name = name
         saveContext()
         fetchFolders()
     }
     
-    func deleteFolder(folder: Folder) {
-        persistentContainer.viewContext.delete(folder)
+    func deleteCategory(category: Category) {
+        persistentContainer.viewContext.delete(category)
         saveContext()
         fetchFolders()
         fetchNotes()
