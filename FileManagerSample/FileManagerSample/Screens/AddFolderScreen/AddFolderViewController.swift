@@ -54,6 +54,8 @@ final class AddFolderViewController : UIViewController {
         }
         
         textChanged()
+        
+        textField.becomeFirstResponder()
     }
     
     public var createDirectoryAction: ((_ directoryName: String) -> Void)?
