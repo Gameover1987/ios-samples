@@ -14,6 +14,13 @@
 		80167DBD2966EEE6004D1CE5 /* NewsParser.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 80167DBB2966EEE6004D1CE5 /* NewsParser.xcdatamodeld */; };
 		80167DBF2966EEE8004D1CE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80167DBE2966EEE8004D1CE5 /* Assets.xcassets */; };
 		80167DC22966EEE8004D1CE5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80167DC02966EEE8004D1CE5 /* LaunchScreen.storyboard */; };
+		80167DCB2966FF77004D1CE5 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80167DCA2966FF77004D1CE5 /* CoreDataManager.swift */; };
+		80167DCE29670019004D1CE5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80167DCD29670019004D1CE5 /* NetworkManager.swift */; };
+		80AB807029671D7C00BD8487 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AB806F29671D7C00BD8487 /* StringExtensions.swift */; };
+		80AB80722967232800BD8487 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AB80712967232800BD8487 /* Article.swift */; };
+		80AB80742967234600BD8487 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AB80732967234600BD8487 /* Answer.swift */; };
+		80AB8076296729E400BD8487 /* OneArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AB8075296729E400BD8487 /* OneArticleViewController.swift */; };
+		80D4922A29670E83009B87C5 /* ArticlesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D4922929670E83009B87C5 /* ArticlesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +33,14 @@
 		80167DBE2966EEE8004D1CE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		80167DC12966EEE8004D1CE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		80167DC32966EEE8004D1CE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		80167DCA2966FF77004D1CE5 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		80167DCD29670019004D1CE5 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		80AB806F29671D7C00BD8487 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		80AB80712967232800BD8487 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		80AB80732967234600BD8487 /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
+		80AB8075296729E400BD8487 /* OneArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneArticleViewController.swift; sourceTree = "<group>"; };
+		80D4922929670E83009B87C5 /* ArticlesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesViewController.swift; sourceTree = "<group>"; };
+		80D4922B29671821009B87C5 /* NewsParserV2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NewsParserV2.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +73,9 @@
 		80167DB12966EEE6004D1CE5 /* NewsParser */ = {
 			isa = PBXGroup;
 			children = (
+				80AB806E29671D6800BD8487 /* Helpers */,
+				80167DCC29670000004D1CE5 /* Network */,
+				80167DC92966FF5C004D1CE5 /* CoreData */,
 				80167DB22966EEE6004D1CE5 /* AppDelegate.swift */,
 				80167DB42966EEE6004D1CE5 /* SceneDelegate.swift */,
 				80167DB62966EEE6004D1CE5 /* ViewController.swift */,
@@ -65,9 +83,37 @@
 				80167DBE2966EEE8004D1CE5 /* Assets.xcassets */,
 				80167DC02966EEE8004D1CE5 /* LaunchScreen.storyboard */,
 				80167DC32966EEE8004D1CE5 /* Info.plist */,
-				80167DBB2966EEE6004D1CE5 /* NewsParser.xcdatamodeld */,
+				80D4922929670E83009B87C5 /* ArticlesViewController.swift */,
+				80AB8075296729E400BD8487 /* OneArticleViewController.swift */,
 			);
 			path = NewsParser;
+			sourceTree = "<group>";
+		};
+		80167DC92966FF5C004D1CE5 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				80167DBB2966EEE6004D1CE5 /* NewsParser.xcdatamodeld */,
+				80167DCA2966FF77004D1CE5 /* CoreDataManager.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		80167DCC29670000004D1CE5 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				80167DCD29670019004D1CE5 /* NetworkManager.swift */,
+				80AB80712967232800BD8487 /* Article.swift */,
+				80AB80732967234600BD8487 /* Answer.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		80AB806E29671D6800BD8487 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				80AB806F29671D7C00BD8487 /* StringExtensions.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,9 +187,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80AB807029671D7C00BD8487 /* StringExtensions.swift in Sources */,
+				80167DCE29670019004D1CE5 /* NetworkManager.swift in Sources */,
+				80AB80722967232800BD8487 /* Article.swift in Sources */,
 				80167DB72966EEE6004D1CE5 /* ViewController.swift in Sources */,
+				80AB8076296729E400BD8487 /* OneArticleViewController.swift in Sources */,
 				80167DBD2966EEE6004D1CE5 /* NewsParser.xcdatamodeld in Sources */,
+				80D4922A29670E83009B87C5 /* ArticlesViewController.swift in Sources */,
 				80167DB32966EEE6004D1CE5 /* AppDelegate.swift in Sources */,
+				80AB80742967234600BD8487 /* Answer.swift in Sources */,
+				80167DCB2966FF77004D1CE5 /* CoreDataManager.swift in Sources */,
 				80167DB52966EEE6004D1CE5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,6 +352,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -327,6 +381,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -367,6 +422,7 @@
 		80167DBB2966EEE6004D1CE5 /* NewsParser.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				80D4922B29671821009B87C5 /* NewsParserV2.xcdatamodel */,
 				80167DBC2966EEE6004D1CE5 /* NewsParser.xcdatamodel */,
 			);
 			currentVersion = 80167DBC2966EEE6004D1CE5 /* NewsParser.xcdatamodel */;
