@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		80B08561296882AA00A4A558 /* JokesListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B08560296882AA00A4A558 /* JokesListTableViewController.swift */; };
+		8006E8502968A10200D9743D /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8006E84F2968A10200D9743D /* CategoriesViewController.swift */; };
+		80B08561296882AA00A4A558 /* JokesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B08560296882AA00A4A558 /* JokesListViewController.swift */; };
 		80B08563296890F600A4A558 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B08562296890F600A4A558 /* DateExtensions.swift */; };
 		80C9C82229686C89001C4389 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C9C82129686C89001C4389 /* AppDelegate.swift */; };
 		80C9C82429686C89001C4389 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C9C82329686C89001C4389 /* SceneDelegate.swift */; };
@@ -21,7 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		80B08560296882AA00A4A558 /* JokesListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesListTableViewController.swift; sourceTree = "<group>"; };
+		8006E84F2968A10200D9743D /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
+		80B08560296882AA00A4A558 /* JokesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesListViewController.swift; sourceTree = "<group>"; };
 		80B08562296890F600A4A558 /* DateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		80C9C81E29686C89001C4389 /* ChuckNorrisJokes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChuckNorrisJokes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80C9C82129686C89001C4389 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +49,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8006E8512968A15600D9743D /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				80C9C83A29687542001C4389 /* JokeViewController.swift */,
+				80B08560296882AA00A4A558 /* JokesListViewController.swift */,
+				8006E84F2968A10200D9743D /* CategoriesViewController.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		8006E8522968A18800D9743D /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				80C9C82F29686C8A001C4389 /* LaunchScreen.storyboard */,
+				80C9C82729686C89001C4389 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		80B085662968910900A4A558 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -74,17 +95,15 @@
 		80C9C82029686C89001C4389 /* ChuckNorrisJokes */ = {
 			isa = PBXGroup;
 			children = (
-				80B085662968910900A4A558 /* Extensions */,
-				80C9C83D296878A0001C4389 /* CoreData */,
-				80C9C83C2968786D001C4389 /* Network */,
+				80C9C83229686C8A001C4389 /* Info.plist */,
 				80C9C82129686C89001C4389 /* AppDelegate.swift */,
 				80C9C82329686C89001C4389 /* SceneDelegate.swift */,
-				80C9C82729686C89001C4389 /* Main.storyboard */,
 				80C9C82D29686C8A001C4389 /* Assets.xcassets */,
-				80C9C82F29686C8A001C4389 /* LaunchScreen.storyboard */,
-				80C9C83229686C8A001C4389 /* Info.plist */,
-				80C9C83A29687542001C4389 /* JokeViewController.swift */,
-				80B08560296882AA00A4A558 /* JokesListTableViewController.swift */,
+				80C9C83D296878A0001C4389 /* CoreData */,
+				80B085662968910900A4A558 /* Extensions */,
+				80C9C83C2968786D001C4389 /* Network */,
+				8006E8512968A15600D9743D /* Screens */,
+				8006E8522968A18800D9743D /* Storyboards */,
 			);
 			path = ChuckNorrisJokes;
 			sourceTree = "<group>";
@@ -179,12 +198,13 @@
 			files = (
 				80C9C83F296878B5001C4389 /* CoreDataManager.swift in Sources */,
 				80C9C83B29687542001C4389 /* JokeViewController.swift in Sources */,
+				8006E8502968A10200D9743D /* CategoriesViewController.swift in Sources */,
 				80C9C82C29686C89001C4389 /* ChuckNorrisJokes.xcdatamodeld in Sources */,
 				80C9C83929686DBF001C4389 /* ChuckNorrisApi.swift in Sources */,
 				80C9C82229686C89001C4389 /* AppDelegate.swift in Sources */,
 				80B08563296890F600A4A558 /* DateExtensions.swift in Sources */,
 				80C9C82429686C89001C4389 /* SceneDelegate.swift in Sources */,
-				80B08561296882AA00A4A558 /* JokesListTableViewController.swift in Sources */,
+				80B08561296882AA00A4A558 /* JokesListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

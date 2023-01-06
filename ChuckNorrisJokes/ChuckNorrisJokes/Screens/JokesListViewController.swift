@@ -2,24 +2,50 @@
 import UIKit
 import CoreData
 
-class JokesListTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
-
-    let fetchedResultsController: NSFetchedResultsController<JokeEntity> = {
+class JokesListViewController: UITableViewController, NSFetchedResultsControllerDelegate, UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        self.fetchedResultsController = createFetchedResultsController()
+    }
+    
+    static func push(in navigationController: UINavigationController, with category: CategoryEntity) {
+        if let controller = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "jokesControllerSID") as? JokesListViewController {
+            controller.category = category
+            navigationController.pushViewController(controller, animated: true)
+            controller.title = category.name!.uppercased()
+        }
+    }
+    
+    var category: CategoryEntity?
+    
+    var fetchedResultsController: NSFetchedResultsController<JokeEntity>!
+    
+    let searchController: UISearchController = {
+        let searchController = UISearchController()
+        searchController.searchBar.placeholder = "Search joke by text..."
+        return searchController
+    }()
+    
+    private func createFetchedResultsController() -> NSFetchedResultsController<JokeEntity> {
         let request = JokeEntity.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "createdAt", ascending: false)]
+        
+        if let category = self.category {
+            request.predicate = NSPredicate(format: "categories contains %@", category)
+        }
         
         let controller = NSFetchedResultsController(fetchRequest: request,
                                                     managedObjectContext: CoreDataManager.shared.persistentContainer.viewContext,
                                                     sectionNameKeyPath: nil,
                                                     cacheName: nil)
+        controller.delegate = self
         
         try? controller.performFetch()
         
         return controller
-    }()
+    }
     
     @IBAction func pushAddaction(_ sender: Any) {
-        ChuckNorrisApi.shared.getRandomJoke { result in
+        ChuckNorrisApi.shared.getRandomJoke(byCategory: category?.name) { result in
             DispatchQueue.main.async {                 
                 switch result {
                 case .failure(let error):
@@ -34,8 +60,14 @@ class JokesListTableViewController: UITableViewController, NSFetchedResultsContr
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchedResultsController = createFetchedResultsController()
         
-        fetchedResultsController.delegate = self
+        navigationItem.searchController = searchController
+        searchController.searchResultsUpdater = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
 
     // MARK: - Table view data source

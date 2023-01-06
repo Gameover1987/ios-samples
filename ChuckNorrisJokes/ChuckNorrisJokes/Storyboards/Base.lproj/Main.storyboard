@@ -3,15 +3,16 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Joke View Controller-->
+        <!--Random joke-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="JokeViewController" customModule="ChuckNorrisJokes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Random joke" id="BYZ-38-t0r" customClass="JokeViewController" customModule="ChuckNorrisJokes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,7 +28,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="fcU-t9-pjV">
+                    <navigationItem key="navigationItem" title="Joke from Chuck" id="fcU-t9-pjV">
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="sjE-Wj-KzL">
                             <connections>
                                 <action selector="jokeRefreshAction:" destination="BYZ-38-t0r" id="v1K-Fc-N5v"/>
@@ -43,10 +44,10 @@
             </objects>
             <point key="canvasLocation" x="1982.4427480916029" y="-27.464788732394368"/>
         </scene>
-        <!--Jokes List Table View Controller-->
+        <!--Jokes-->
         <scene sceneID="bLX-tV-SA8">
             <objects>
-                <tableViewController id="vkC-QI-0EE" customClass="JokesListTableViewController" customModule="ChuckNorrisJokes" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="jokesControllerSID" id="vkC-QI-0EE" customClass="JokesListViewController" customModule="ChuckNorrisJokes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="SGA-Ch-4C7">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -82,7 +83,7 @@
                             <outlet property="delegate" destination="vkC-QI-0EE" id="TKd-vI-slh"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="ov3-99-C5j">
+                    <navigationItem key="navigationItem" title="Jokes" id="ov3-99-C5j">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="vwn-OH-at8">
                             <connections>
                                 <action selector="pushAddaction:" destination="vkC-QI-0EE" id="YJa-A0-uQx"/>
@@ -93,6 +94,54 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lKA-sY-QPc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1963" y="656"/>
+        </scene>
+        <!--Categories-->
+        <scene sceneID="ldg-Rp-Uut">
+            <objects>
+                <tableViewController id="CxW-d6-2Ke" customClass="CategoriesViewController" customModule="ChuckNorrisJokes" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="wlP-Em-7SU">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="f5q-YF-P3G" detailTextLabel="0a5-xf-chm" style="IBUITableViewCellStyleValue1" id="x7A-Gv-WKZ">
+                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="x7A-Gv-WKZ" id="MJr-JG-PTS">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="f5q-YF-P3G">
+                                            <rect key="frame" x="20" y="15" width="25" height="14.333333333333334"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0a5-xf-chm">
+                                            <rect key="frame" x="340.33333333333331" y="15" width="32.666666666666664" height="14.333333333333334"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="CxW-d6-2Ke" id="aod-6v-bZr"/>
+                            <outlet property="delegate" destination="CxW-d6-2Ke" id="kXB-pS-YPw"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Categories" id="oxM-lY-3ua"/>
+                    <connections>
+                        <segue destination="vkC-QI-0EE" kind="show" id="TXd-1K-bcK"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jpr-OI-Rwb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1963" y="1404"/>
         </scene>
         <!--Random joke-->
         <scene sceneID="80R-ah-ZVO">
@@ -126,6 +175,7 @@
                     <connections>
                         <segue destination="iDL-dn-blg" kind="relationship" relationship="viewControllers" id="OXi-OZ-rbT"/>
                         <segue destination="m7o-fn-fna" kind="relationship" relationship="viewControllers" id="1ty-pI-nEA"/>
+                        <segue destination="yxU-Ql-xCB" kind="relationship" relationship="viewControllers" id="E91-KL-Fh8"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xbb-kA-rXS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -151,10 +201,35 @@
             </objects>
             <point key="canvasLocation" x="1036" y="656"/>
         </scene>
+        <!--Categories-->
+        <scene sceneID="NJh-X2-TA4">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yxU-Ql-xCB" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Categories" id="lJN-39-MNf">
+                        <imageReference key="image" image="rectangle.3.group" catalog="system" symbolScale="default"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0gj-i4-TsN">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="CxW-d6-2Ke" kind="relationship" relationship="rootViewController" id="YPD-3X-8Le"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ffm-C5-YHT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1036" y="1404"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="bmb-b5-mYM"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="list.star" catalog="system" width="128" height="95"/>
         <image name="person.wave.2.fill" catalog="system" width="128" height="119"/>
+        <image name="rectangle.3.group" catalog="system" width="128" height="80"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

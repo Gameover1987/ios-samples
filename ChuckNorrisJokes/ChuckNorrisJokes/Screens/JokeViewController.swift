@@ -25,7 +25,7 @@ class JokeViewController: UIViewController {
     
     private func refreshJokeAndStore() {
         jokeRefreshButton.isEnabled = false
-        ChuckNorrisApi.shared.getRandomJoke { result in
+        ChuckNorrisApi.shared.getRandomJoke(byCategory: nil) { result in
             
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }

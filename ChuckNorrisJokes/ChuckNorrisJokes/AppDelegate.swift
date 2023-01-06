@@ -13,15 +13,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        ChuckNorrisApi.shared.getRandomJoke { result in
-            switch result {
-            case .failure(let error):
-                print(error)
-            case .success(let joke):
-                print(joke)
-            }
-        }
-        
         return true
     }
     

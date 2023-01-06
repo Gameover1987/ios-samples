@@ -12,40 +12,52 @@ final class CoreDataManager {
     func addJoke(_ joke: Joke) {
         persistentContainer.performBackgroundTask { context in
             
-            if self.isJokeExists(joke, in: context) {
-                return
+            let jokeEntity = self.getOrCreateJoke(joke: joke, in: context)
+            
+            for categoryAsString in joke.categories {
+                let categoryEntity = self.getOrCreateCategory(byName: categoryAsString, in: context)
+                
+                categoryEntity.addToJokes(jokeEntity)
+                jokeEntity.addToCategories(categoryEntity)
             }
             
-            let jokeEntity = JokeEntity(context: context)
-            jokeEntity.uid = joke.id
-            jokeEntity.createdAt = Date()
-            jokeEntity.text = joke.value
-            
-            do {
-                try context.save()
-            }
-            catch {
-                print(error)
-            }
+            self.save(in: context)
         }
     }
     
     func deleteJoke(joke: JokeEntity) {
         persistentContainer.viewContext.delete(joke)
-        saveContext()
+        save(in: persistentContainer.viewContext)
     }
     
-    private func isJokeExists(_ joke: Joke, in context: NSManagedObjectContext) -> Bool {
+    private func getOrCreateCategory(byName name: String, in context: NSManagedObjectContext) -> CategoryEntity {
+        let request = CategoryEntity.fetchRequest()
+        request.predicate = NSPredicate(format: "name == %@", name)
+        
+        if let category = (try? context.fetch(request))?.first {
+            return category
+        }
+        else {
+            let category = CategoryEntity(context: context)
+            category.name = name
+            return category
+        }
+    }
+    
+    private func getOrCreateJoke(joke: Joke, in context: NSManagedObjectContext) -> JokeEntity {
         let request = JokeEntity.fetchRequest()
-        request.fetchLimit =  1
         request.predicate = NSPredicate(format: "uid == %@", joke.id)
-
-        do {
-            let count = try context.count(for: request)
-            return count > 0
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-            return false
+        
+        if let jokeEntity = (try? context.fetch(request))?.first {
+            return jokeEntity
+        }
+        else {
+            let jokeEntity = JokeEntity(context: context)
+            jokeEntity.uid = joke.id
+            jokeEntity.createdAt = Date()
+            jokeEntity.text = joke.value
+            
+            return jokeEntity
         }
     }
     
@@ -62,8 +74,7 @@ final class CoreDataManager {
         return container
     }()
 
-    private func saveContext () {
-        let context = persistentContainer.viewContext
+    private func save(in context: NSManagedObjectContext) {
         if context.hasChanges {
             do {
                 try context.save()
