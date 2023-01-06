@@ -5,7 +5,7 @@
 
 [ContactList](https://github.com/Gameover1987/ios-samples/tree/main/ContactsList) - список контактов, тренируем AlertController  
 
-[ChuckNorrisJokes](https://github.com/Gameover1987/ios-samples/tree/main/ChuckNorrisJokes) - шутки про Чака Норриса. Используем публичное API, CoreData и NSFetchedResultsController
+[ChuckNorrisJokes](https://github.com/Gameover1987/ios-samples/tree/main/ChuckNorrisJokes) - шутки про Чака Норриса. Используем публичное [API](https://api.chucknorris.io/), CoreData и NSFetchedResultsController
 
 [FileManagerSample](https://github.com/Gameover1987/ios-samples/tree/main/FileManagerSample) - файловый менеджер, копаемся в песочнице нашего приложения, создаем и удаляем папки, добавляем в них картинки из галереи  
 
