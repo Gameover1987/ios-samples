@@ -5,6 +5,8 @@ import CoreData
 class JokesListViewController: UITableViewController, NSFetchedResultsControllerDelegate, UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         self.fetchedResultsController = createFetchedResultsController()
+        
+        tableView.reloadData()
     }
     
     static func push(in navigationController: UINavigationController, with category: CategoryEntity) {
@@ -29,8 +31,14 @@ class JokesListViewController: UITableViewController, NSFetchedResultsController
         let request = JokeEntity.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "createdAt", ascending: false)]
         
-        if let category = self.category {
+        let searchString = searchController.searchBar.text!
+        
+        if let category = self.category, searchString != "" {
+            request.predicate = NSPredicate(format: "categories contains %@ AND text contains[c] %@", category, searchString)
+        } else if let category = self.category {
             request.predicate = NSPredicate(format: "categories contains %@", category)
+        } else if searchString != "" {
+            request.predicate = NSPredicate(format: "text contains[c] %@", searchString)
         }
         
         let controller = NSFetchedResultsController(fetchRequest: request,
@@ -89,6 +97,14 @@ class JokesListViewController: UITableViewController, NSFetchedResultsController
         cell.detailTextLabel?.text = joke.createdAt?.getFormatted(format: "dd.MM.yyyy HH:mm:ss")
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let controller = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "jokeControllerSID") as? JokeViewController {
+            let joke = fetchedResultsController.object(at: indexPath)
+            controller.joke = joke
+            self.present(controller, animated: true)
+        }
     }
 
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {

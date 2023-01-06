@@ -1,14 +1,8 @@
-//
-//  JokeViewController.swift
-//  ChuckNorrisJokes
-//
-//  Created by Вячеслав on 06.01.2023.
-//
 
 import UIKit
 
 class JokeViewController: UIViewController {
-
+    
     @IBOutlet weak var jokeRefreshButton: UIBarButtonItem!
     
     @IBAction func jokeRefreshAction(_ sender: Any) {
@@ -17,10 +11,19 @@ class JokeViewController: UIViewController {
     
     @IBOutlet weak var labelJoke: UILabel!
     
+    var joke: JokeEntity?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        refreshJokeAndStore()
+        view.backgroundColor = UIColor(displayP3Red: 248/255, green: 248/255, blue: 248/255, alpha: 1)
+        
+        if let joke = joke {
+            self.labelJoke.text = joke.text
+            self.labelJoke.tintColor = .systemGray
+        } else {
+            refreshJokeAndStore()
+        }
     }
     
     private func refreshJokeAndStore() {
