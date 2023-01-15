@@ -18,9 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window = window
         
+        let navigationController = UINavigationController()
         let pageViewController = MyPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
+        navigationController.setViewControllers([pageViewController], animated: true)
         
-        window.rootViewController = pageViewController
+        window.rootViewController = navigationController
         
         window.makeKeyAndVisible()
         

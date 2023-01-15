@@ -1,13 +1,14 @@
+
 import UIKit
 
-class BlueViewController: UIViewController {
-
+final class GreenViewController : UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Blue"
+        title = "Green"
         
-        view.backgroundColor = .blue
+        view.backgroundColor = .green
     }
     
     override func viewWillAppear(_ animated: Bool) {

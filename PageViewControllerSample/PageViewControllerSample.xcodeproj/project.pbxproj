@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		803BBC972974616200FB5954 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 803BBC962974616200FB5954 /* SnapKit */; };
+		80720C2929734235008E9336 /* GreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80720C2829734235008E9336 /* GreenViewController.swift */; };
 		80972959296DF323008CC37F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80972958296DF323008CC37F /* AppDelegate.swift */; };
 		8097295D296DF323008CC37F /* WhiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8097295C296DF323008CC37F /* WhiteViewController.swift */; };
 		80972962296DF328008CC37F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80972961296DF328008CC37F /* Assets.xcassets */; };
@@ -16,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		80720C2829734235008E9336 /* GreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenViewController.swift; sourceTree = "<group>"; };
 		80972955296DF323008CC37F /* PageViewControllerSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PageViewControllerSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80972958296DF323008CC37F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8097295C296DF323008CC37F /* WhiteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteViewController.swift; sourceTree = "<group>"; };
@@ -31,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				803BBC972974616200FB5954 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,12 +61,13 @@
 			isa = PBXGroup;
 			children = (
 				80972958296DF323008CC37F /* AppDelegate.swift */,
-				8097295C296DF323008CC37F /* WhiteViewController.swift */,
 				80972961296DF328008CC37F /* Assets.xcassets */,
 				80972966296DF328008CC37F /* Info.plist */,
-				8097296C296DF419008CC37F /* RedViewController.swift */,
+				8097295C296DF323008CC37F /* WhiteViewController.swift */,
 				8097296E296DF439008CC37F /* BlueViewController.swift */,
+				8097296C296DF419008CC37F /* RedViewController.swift */,
 				80972972296DFA32008CC37F /* MyPageViewController.swift */,
+				80720C2829734235008E9336 /* GreenViewController.swift */,
 			);
 			path = PageViewControllerSample;
 			sourceTree = "<group>";
@@ -83,6 +88,9 @@
 			dependencies = (
 			);
 			name = PageViewControllerSample;
+			packageProductDependencies = (
+				803BBC962974616200FB5954 /* SnapKit */,
+			);
 			productName = PageViewControllerSample;
 			productReference = 80972955296DF323008CC37F /* PageViewControllerSample.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +119,9 @@
 				Base,
 			);
 			mainGroup = 8097294C296DF323008CC37F;
+			packageReferences = (
+				803BBC952974616200FB5954 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 80972956296DF323008CC37F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -139,6 +150,7 @@
 				80972973296DFA32008CC37F /* MyPageViewController.swift in Sources */,
 				8097295D296DF323008CC37F /* WhiteViewController.swift in Sources */,
 				8097296D296DF419008CC37F /* RedViewController.swift in Sources */,
+				80720C2929734235008E9336 /* GreenViewController.swift in Sources */,
 				8097296F296DF439008CC37F /* BlueViewController.swift in Sources */,
 				80972959296DF323008CC37F /* AppDelegate.swift in Sources */,
 			);
@@ -337,6 +349,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		803BBC952974616200FB5954 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		803BBC962974616200FB5954 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 803BBC952974616200FB5954 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8097294D296DF323008CC37F /* Project object */;
 }

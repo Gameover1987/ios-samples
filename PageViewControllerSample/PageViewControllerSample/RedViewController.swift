@@ -10,4 +10,11 @@ class RedViewController: UIViewController {
         
         view.backgroundColor = .red
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let pageViewController  = self.parent as? UIPageViewController
+        pageViewController?.title = title
+    }
 }
