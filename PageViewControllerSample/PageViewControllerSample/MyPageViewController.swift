@@ -37,7 +37,7 @@ class MyPageViewController: UIPageViewController {
         view.addSubview(pageControl)
         
         pageControl.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).inset(30)
+            make.top.equalTo(view.safeAreaLayoutGuide).inset(0)
             make.left.right.equalTo(view.safeAreaLayoutGuide)
         }
         
@@ -49,10 +49,11 @@ class MyPageViewController: UIPageViewController {
     private func addController() {
         let greenController = GreenViewController()
         coloredControllers.insert(greenController, at: 0)
+       
+        setViewControllers([greenController], direction: .forward, animated: true)
         
         pageControl.numberOfPages = coloredControllers.count
-        
-        setViewControllers([greenController], direction: .forward, animated: true)
+        pageControl.currentPage = 0
     }
     
     private lazy var coloredControllers: [UIViewController] = {
@@ -97,11 +98,11 @@ extension MyPageViewController: UIPageViewControllerDataSource {
         return nil
     }
     
-    func presentationCount(for pageViewController: UIPageViewController) -> Int {
-        return pageControl.numberOfPages
-    }
-
-    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
-        return pageControl.currentPage
-    }
+//    func presentationCount(for pageViewController: UIPageViewController) -> Int {
+//        return pageControl.numberOfPages
+//    }
+//
+//    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
+//        return pageControl.currentPage
+//    }
 }
