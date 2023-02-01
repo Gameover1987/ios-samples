@@ -10,6 +10,8 @@
 		804FD36F298AD4AD00BF58B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804FD36E298AD4AD00BF58B7 /* AppDelegate.swift */; };
 		804FD373298AD4AD00BF58B7 /* MapNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804FD372298AD4AD00BF58B7 /* MapNavigationViewController.swift */; };
 		804FD378298AD4AE00BF58B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 804FD377298AD4AE00BF58B7 /* Assets.xcassets */; };
+		804FD384298AD5E800BF58B7 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 804FD383298AD5E800BF58B7 /* SnapKit */; };
+		804FD386298ADA4100BF58B7 /* MapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804FD385298ADA4100BF58B7 /* MapAnnotation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,6 +20,7 @@
 		804FD372298AD4AD00BF58B7 /* MapNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapNavigationViewController.swift; sourceTree = "<group>"; };
 		804FD377298AD4AE00BF58B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		804FD37C298AD4AE00BF58B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		804FD385298ADA4100BF58B7 /* MapAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAnnotation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -25,6 +28,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				804FD384298AD5E800BF58B7 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,6 +58,7 @@
 				804FD372298AD4AD00BF58B7 /* MapNavigationViewController.swift */,
 				804FD377298AD4AE00BF58B7 /* Assets.xcassets */,
 				804FD37C298AD4AE00BF58B7 /* Info.plist */,
+				804FD385298ADA4100BF58B7 /* MapAnnotation.swift */,
 			);
 			path = MapNavigationSample;
 			sourceTree = "<group>";
@@ -74,6 +79,9 @@
 			dependencies = (
 			);
 			name = MapNavigationSample;
+			packageProductDependencies = (
+				804FD383298AD5E800BF58B7 /* SnapKit */,
+			);
 			productName = MapNavigationSample;
 			productReference = 804FD36B298AD4AD00BF58B7 /* MapNavigationSample.app */;
 			productType = "com.apple.product-type.application";
@@ -102,6 +110,9 @@
 				Base,
 			);
 			mainGroup = 804FD362298AD4AD00BF58B7;
+			packageReferences = (
+				804FD382298AD5E800BF58B7 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 804FD36C298AD4AD00BF58B7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -129,6 +140,7 @@
 			files = (
 				804FD373298AD4AD00BF58B7 /* MapNavigationViewController.swift in Sources */,
 				804FD36F298AD4AD00BF58B7 /* AppDelegate.swift in Sources */,
+				804FD386298ADA4100BF58B7 /* MapAnnotation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,6 +337,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		804FD382298AD5E800BF58B7 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		804FD383298AD5E800BF58B7 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 804FD382298AD5E800BF58B7 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 804FD363298AD4AD00BF58B7 /* Project object */;
 }
