@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>DogEatingVegetables</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>Моя собака %@ съела %#@carrotsCount@ и %#@applesCount@ сегодня!</string>
+		<key>carrotsCount</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>zero</key>
+			<string>0 морковок</string>
+			<key>one</key>
+			<string>1 морковку</string>
+			<key>two</key>
+			<string>2 морковки</string>
+			<key>few</key>
+			<string>%d морковок</string>
+			<key>many</key>
+			<string>%d морковок</string>
+			<key>other</key>
+			<string>%d морковок</string>
+		</dict>
+		<key>applesCount</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>zero</key>
+			<string>0 яблок</string>
+			<key>one</key>
+			<string>1 яблоко</string>
+			<key>two</key>
+			<string>2 яблока</string>
+			<key>few</key>
+			<string>%d яблока</string>
+			<key>many</key>
+			<string>%d яблок</string>
+			<key>other</key>
+			<string>%d яблок</string>
+		</dict>
+	</dict>
+</dict>
+</plist>
