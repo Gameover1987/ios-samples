@@ -8,6 +8,9 @@ class ViewController: UIViewController {
       
         title = "title-localizable"§
         
+        let localizedStr = NSLocalizedString("preved", tableName: "CustomLocalizationTable", bundle: Bundle.main, value: "", comment: "")
+        print(localizedStr)
+        
         let formatted = NSLocalizedString("DogEatingVegetables", comment: "")
         let localized1 = String(format: formatted, "Tor", 1, 3)
         let localized2 = String(format: formatted, "Tor", 1, 4)
