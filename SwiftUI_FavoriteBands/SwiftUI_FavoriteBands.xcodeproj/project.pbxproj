@@ -16,6 +16,8 @@
 		80409AFF29910E3200728FD7 /* BandsProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80409AFE29910E3200728FD7 /* BandsProviderProtocol.swift */; };
 		80409B0129910E6A00728FD7 /* Band.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80409B0029910E6A00728FD7 /* Band.swift */; };
 		80409B0329910E9E00728FD7 /* BandsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80409B0229910E9E00728FD7 /* BandsProvider.swift */; };
+		80409B052991759300728FD7 /* RockBandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80409B042991759300728FD7 /* RockBandView.swift */; };
+		80409B07299175B900728FD7 /* RockBandListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80409B06299175B900728FD7 /* RockBandListItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		80409AFE29910E3200728FD7 /* BandsProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BandsProviderProtocol.swift; sourceTree = "<group>"; };
 		80409B0029910E6A00728FD7 /* Band.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Band.swift; sourceTree = "<group>"; };
 		80409B0229910E9E00728FD7 /* BandsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BandsProvider.swift; sourceTree = "<group>"; };
+		80409B042991759300728FD7 /* RockBandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RockBandView.swift; sourceTree = "<group>"; };
+		80409B06299175B900728FD7 /* RockBandListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RockBandListItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +96,8 @@
 			children = (
 				80409AEA29910C9C00728FD7 /* BandsView.swift */,
 				80409AF829910D3500728FD7 /* BandsViewModel.swift */,
+				80409B042991759300728FD7 /* RockBandView.swift */,
+				80409B06299175B900728FD7 /* RockBandListItemView.swift */,
 			);
 			path = Bands;
 			sourceTree = "<group>";
@@ -188,6 +194,8 @@
 				80409AEB29910C9C00728FD7 /* BandsView.swift in Sources */,
 				80409AE929910C9C00728FD7 /* SwiftUI_FavoriteBandsApp.swift in Sources */,
 				80409B0329910E9E00728FD7 /* BandsProvider.swift in Sources */,
+				80409B052991759300728FD7 /* RockBandView.swift in Sources */,
+				80409B07299175B900728FD7 /* RockBandListItemView.swift in Sources */,
 				80409AF929910D3500728FD7 /* BandsViewModel.swift in Sources */,
 				80409AFF29910E3200728FD7 /* BandsProviderProtocol.swift in Sources */,
 				80409AFC29910D6A00728FD7 /* BandViewModel.swift in Sources */,
