@@ -13,9 +13,9 @@ struct BandsView: View {
                 } label: {
                     RockBandListItemView(band: band)
                 }
+                .listStyle(.inset)
                 .navigationTitle("Rock bands")
             }
-            Text("Select a Note")
         }
     }
 }
