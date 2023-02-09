@@ -34,23 +34,6 @@ struct ContentView: View {
             }
             .buttonStyle(.borderedProminent)
             
-            Button (action: {
-                LocalAuthorizationService.shared.evaluate { success, error in
-                    if let error = error {
-                        print(error.errorDescription)
-                        return
-                    }
-                    
-                    print("Аутентификация с использованием \(LocalAuthorizationService.shared.biometryType) прошла успешно!")
-                }
-            }) {
-                Image(systemName: LocalAuthorizationService.shared.biometryType == .touchID ? "touchid" : "faceid")
-                      .resizable()
-                      .frame(width: 50, height: 50)
-            }
-            .padding(.top, 16.0)
-            .opacity(LocalAuthorizationService.shared.biometryType == .none ? 0.0 : 1.0)
-            
             Spacer()
             
             Button {
