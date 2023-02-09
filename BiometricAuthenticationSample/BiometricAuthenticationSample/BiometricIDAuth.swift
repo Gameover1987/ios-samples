@@ -45,17 +45,13 @@ final class BiometricIDAuth {
     
     private var error: NSError?
     
-    init(policy: LAPolicy = .deviceOwnerAuthentication,
+    init(policy: LAPolicy = .deviceOwnerAuthenticationWithBiometrics,
          localizedReason: String = "Verify your identity",
          localizedFallbackTitle: String = "Enter App Password") {
         self.policy = policy
         self.localizedreason = localizedReason
         context.localizedFallbackTitle = localizedFallbackTitle
         context.localizedFallbackTitle = "Touch me not ))"
-    }
-    
-    var biometryType: BiometricType {
-        return biometricType(for: context.biometryType)
     }
     
     func canEvaluate(completion: (Bool, BiometricType, BiometricError?) -> Void) {
