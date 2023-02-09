@@ -11,6 +11,7 @@
 		800A9EDD298FABF3009DFEE0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800A9EDC298FABF3009DFEE0 /* ContentView.swift */; };
 		800A9EDF298FABF4009DFEE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 800A9EDE298FABF4009DFEE0 /* Assets.xcassets */; };
 		800A9EE2298FABF4009DFEE0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 800A9EE1298FABF4009DFEE0 /* Preview Assets.xcassets */; };
+		8034D4C129950332004B7ECB /* LocalAuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8034D4C029950332004B7ECB /* LocalAuthorizationService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		800A9EDC298FABF3009DFEE0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		800A9EDE298FABF4009DFEE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		800A9EE1298FABF4009DFEE0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8034D4C029950332004B7ECB /* LocalAuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthorizationService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 				800A9EDC298FABF3009DFEE0 /* ContentView.swift */,
 				800A9EDE298FABF4009DFEE0 /* Assets.xcassets */,
 				800A9EE0298FABF4009DFEE0 /* Preview Content */,
+				8034D4C029950332004B7ECB /* LocalAuthorizationService.swift */,
 			);
 			path = SwiftUI_VkLoginPage;
 			sourceTree = "<group>";
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8034D4C129950332004B7ECB /* LocalAuthorizationService.swift in Sources */,
 				800A9EDD298FABF3009DFEE0 /* ContentView.swift in Sources */,
 				800A9EDB298FABF3009DFEE0 /* SwiftUI_VkLoginPageApp.swift in Sources */,
 			);

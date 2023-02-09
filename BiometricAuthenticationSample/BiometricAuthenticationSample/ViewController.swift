@@ -23,6 +23,8 @@ class ViewController: UIViewController {
         
         view.backgroundColor = .white
         
+        print("Biometric type available: \(biometricAuthId.biometryType)")
+        
         view.addSubview(authButton)
         authButton.snp.makeConstraints { make in
             make.center.equalTo(view.safeAreaLayoutGuide)
@@ -38,12 +40,16 @@ class ViewController: UIViewController {
                 self.showAlert(title: "Error", message: error?.localizedDescription ?? "Biometry should be configured!")
                 return
             }
+            print("Biometric type available: \(biometricAuthId.biometryType)")
+            
             
             biometricAuthId.evaluate { success, error in
                 guard success else {
                     self.showAlert(title: "Error", message: error?.localizedDescription ?? "Biometry should be configured!")
                     return
                 }
+                
+                print("Biometric type available: \(self.biometricAuthId.biometryType)")
                 
                 self.showAlert(title: "Success", message: "Biometric authentication passed successfully!")
             }

@@ -2,42 +2,44 @@
 import Foundation
 import LocalAuthentication
 
-final class BiometricIDAuth {
-    enum BiometricType {
-        case none
-        case touchID
-        case faceID
-        case unknown
-    }
+enum BiometricType {
+    case none
+    case touchID
+    case faceID
+}
+
+enum BiometricError: LocalizedError {
+    case authenticationFailed
+    case userCancel
+    case userFallback
+    case biometryNotAvailable
+    case biometryNotEnrolled
+    case biometryLockout
+    case unknown
     
-    enum BiometricError: LocalizedError {
-        case authenticationFailed
-        case userCancel
-        case userFallback
-        case biometryNotAvailable
-        case biometryNotEnrolled
-        case biometryLockout
-        case unknown
-        
-        var errorDescription: String? {
-            switch self {
-            case .authenticationFailed:
-                return "There was a problem verifying your identity."
-            case .userCancel:
-                return "You pressed cancel."
-            case .userFallback:
-                return "You pressed password."
-            case .biometryNotAvailable:
-                return "FaceID/TouchID is not available."
-            case .biometryNotEnrolled:
-                return "FaceID/TouchID is not setup."
-            case .biometryLockout:
-                return "FaceID/TouchID is locked."
-            case .unknown:
-                return "FaceID/TouchID may not be configured."
-            }
+    var errorDescription: String {
+        switch self {
+        case .authenticationFailed:
+            return "Чет проблема какая то с определением кто есть кто"
+        case .userCancel:
+            return "Вы отменили аутентификацию"
+        case .userFallback:
+            return "Вы решили ввести пароль"
+        case .biometryNotAvailable:
+            return "FaceID/TouchID недоступен"
+        case .biometryNotEnrolled:
+            return "FaceID/TouchID не настроен"
+        case .biometryLockout:
+            return "FaceID/TouchID заблокирован"
+        default:
+            return "FaceID/TouchID возможно не сконфигурирован"
         }
     }
+}
+
+final class LocalAuthorizationService {
+    
+    static let shared = LocalAuthorizationService()
     
     private let context = LAContext()
     private let policy: LAPolicy
@@ -46,33 +48,27 @@ final class BiometricIDAuth {
     private var error: NSError?
     
     init(policy: LAPolicy = .deviceOwnerAuthentication,
-         localizedReason: String = "Verify your identity",
-         localizedFallbackTitle: String = "Enter App Password") {
+         localizedReason: String = "Кто стучится в дверь ко мне?",
+         localizedFallbackTitle: String = "Может все таки пароль введем?") {
         self.policy = policy
         self.localizedreason = localizedReason
         context.localizedFallbackTitle = localizedFallbackTitle
-        context.localizedFallbackTitle = "Touch me not ))"
+        context.localizedFallbackTitle = "Может таки пароль?"
+        
+        context.canEvaluatePolicy(policy, error: &error)
     }
     
     var biometryType: BiometricType {
         return biometricType(for: context.biometryType)
     }
     
-    func canEvaluate(completion: (Bool, BiometricType, BiometricError?) -> Void) {
-        guard context.canEvaluatePolicy(policy, error: &error) else {
-            let type = biometricType(for: context.biometryType)
-            
-            guard let error = error else {
-                return completion(false, type, nil)
-            }
-            
-            return completion(false, type, biometricError(from: error))
+    func evaluate(completion: @escaping(Bool, BiometricError?) -> Void) {
+        
+        if biometryType == .none {
+            print("Биометрия недоступна")
+            return
         }
         
-        return completion(true, biometricType(for: context.biometryType), nil)
-    }
-    
-    func evaluate(completion: @escaping(Bool, BiometricError?) -> Void) {
         context.evaluatePolicy(policy, localizedReason: localizedreason) { [weak self] success, error in
             DispatchQueue.main.async {
                 if success {
@@ -95,9 +91,6 @@ final class BiometricIDAuth {
             return .touchID
         case .faceID:
             return .faceID
-            
-        default:
-            return .unknown
         }
     }
     
